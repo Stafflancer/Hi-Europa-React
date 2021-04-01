@@ -1,0 +1,47 @@
+.join-us {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 38px;
+  background: $join-us;
+  .title {
+    @extend .h2-headline;
+    margin-bottom: 24px;
+  }
+  .description {
+    @extend .body-md-brand;
+    margin-bottom: 35px;
+  }
+  .wechat {
+    margin-right: 40px;
+    @media (min-width: $tablet) {
+      margin-right: 90px;
+    }
+  }
+  .wechat, .weibo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .logo-wrap {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    img {
+      width: 56px;
+      margin-right: 8px;
+    }
+    span {
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
+  .qr-code {
+    width: 120px;
+    margin-bottom: 16px;
+  }
+  .account-name {
+    @extend .body-md-brand-bold;
+  }
+}

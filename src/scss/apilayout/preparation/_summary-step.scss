@@ -1,0 +1,46 @@
+.summary-step {
+  .accept-cgv {
+    display: flex;
+    margin-bottom: 32px;
+    label {
+      margin: 0;
+      @extend .body-sm;
+      color: $grey-700;
+      text-align: left;
+      margin-left: 16px;
+      a {
+        color: $primary-pl;
+      }
+    }
+  }
+  .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .summary-content {
+    @extend .body-xl-brand-bold;
+    color: $grey-600;
+    text-align: left;
+    margin-bottom: 0;
+    span {
+      color: $primary-pl;
+    }
+    .phone-number {
+      white-space: nowrap;
+    }
+  }
+  .modifier {
+    @extend .body-sm-brand-bold;
+    text-align: left;
+    text-decoration: underline;
+    background: unset;
+  }
+  .other-thing {
+    @extend .body-md-brand;
+    color: $grey-700;
+    margin-bottom: 0;
+    margin-top: 12px;
+    text-align: left;
+  }
+}

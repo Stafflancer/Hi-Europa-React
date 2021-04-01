@@ -1,0 +1,19 @@
+.api-content-wrap {
+  .get-back-button {
+    cursor: pointer;
+    margin-top: 40px;
+    .icon {
+      color: $primary-pl;
+      margin-right: 18px;
+    }
+    span.text {
+      @extend .body-md-brand-bold;
+      color: $primary-pl;
+      text-align: left;
+    }
+  }
+  .title {
+    @extend .h2-headline;
+    margin: 50px auto 56px auto;
+  }
+}

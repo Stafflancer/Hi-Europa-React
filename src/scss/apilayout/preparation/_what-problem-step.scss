@@ -1,0 +1,15 @@
+.what-problem-step, .more-details-step {
+  .api-title {
+    padding-top: 0;
+  }
+  .problem-item {
+    @extend .body-md-brand-bold;
+    width: 100%;
+    line-height: 28px;
+    padding: 24px;
+    margin-bottom: 16px;
+    border: 2px solid $gray-light;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+}

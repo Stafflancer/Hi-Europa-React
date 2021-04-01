@@ -1,0 +1,61 @@
+.contact-us {
+  padding: 25px 38px 40px 38px;
+  .heading {
+    @extend .body-xl-brand-bold;
+    margin-bottom: 24px;
+    @media (min-width: $tablet) {
+      padding: 0 10%;
+      max-width: 980px;
+      margin: 0 auto;
+      margin-bottom: 24px;
+    }
+  }
+  .flex-wrap .chat{
+    margin: 0 0 24px 0;
+    @media (min-width: $tablet) {
+      margin: 0 24px 0 0;
+    }
+  }
+  .chat, .telephone {
+    width: 100%;
+    border: 4px solid $secondary-pl;
+    border-radius: 36px;
+    padding: 24px 32px 36px 32px;
+    @media (min-width: $tablet) {
+      max-width: 478px;
+    }
+  }
+  .chat {
+    .title {
+      @extend .h3-headline;
+      margin-bottom: 32px;
+    }
+    .chat-icon {
+      width: 84px;
+      height: auto;
+      margin-bottom: 32px;
+    }
+    .description {
+      @extend .body-xl-brand-bold;
+      margin-bottom: 24px;
+    }
+  }
+  .telephone {
+    .title {
+      @extend .h3-headline;
+      margin-bottom: 40px;
+    }
+    .phone-number {
+      @extend .h3-headline;
+      color: $secondary-pl;
+      margin-bottom: 32px;
+    }
+    .working-time {
+      @extend .body-xl-brand-bold;
+      margin-bottom: 16px;
+    }
+  }
+  .call-us-button {
+    margin-top: auto;
+  }
+}

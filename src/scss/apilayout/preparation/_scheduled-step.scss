@@ -1,0 +1,88 @@
+.api-content-wrap.scheduled-step, .api-content-wrap.summary-step {
+  .heading {
+    @extend .h3-headline;
+    margin-bottom: 16px;
+    text-align: left;
+  }
+  section {
+    margin-bottom: 40px;
+  }
+  .result {
+    @extend .body-xl-brand-bold;
+    color: $primary-pl;
+    text-align: left;
+    margin-bottom: 12px;
+  }
+  .description {
+    @extend .body-md-brand;
+    color: $grey-700;
+    text-align: left;
+    margin-bottom: 32px;
+  }
+  .date-time {
+    label {
+      @extend .body-sm-brand-bold;
+      display: block;
+      margin-bottom: 12px;
+      text-align: left
+    }
+    input, select {
+      width: 100%;
+    }
+    .date {
+      margin-bottom: 18px;
+    }
+  }
+  .price {
+    @extend .h3-headline;
+    color: $primary-pl;
+    margin-bottom: 8px;
+    text-align: left;
+    sup {
+      @extend .body-sm-brand-bold;
+      text-align: left
+    }
+  }
+  .note {
+    @extend .body-md-brand-bold;
+    text-align: left;
+    margin-bottom: 16px;
+  }
+  .service-includes {
+    margin-bottom: 16px !important;
+  }
+  .service-includes li {
+    @extend .body-md-brand;
+    text-align: left;
+    color: $grey-700;
+    padding: 12px 0;
+    border-top: 1px solid $gray-light;
+  }
+  .service-includes li:last-child {
+    border-bottom: 1px solid $gray-light;
+  }
+  .detail {
+    font-size: 16px;
+    line-height: 20px;
+    color: $grey-700;
+    text-align: left;
+    margin-bottom: 56px;
+  }
+  .bottom-group-button {
+    display: flex;
+    justify-content: flex-end;
+    @media (max-width: $bp-tablet) {
+      flex-direction: column;
+      button {
+        align-self: flex-end;
+      }
+    }
+    .api-custom-button_white {
+      margin-right: 40px;
+      @media (max-width: $bp-tablet) {
+        margin-right: 0;
+        margin-bottom: 18px;
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+.get-your-quote {
+  padding: 24px 38px 0 38px;
+  @media (min-width: $tablet) {
+    margin-top: 24px;
+  }
+  .intro-sentence {
+    @extend .body-xl-brand-bold;
+    margin-bottom: 24px;
+    @media (min-width: $tablet) {
+      padding: 0 10%;
+      max-width: 980px;
+      margin: 0 auto;
+      margin-bottom: 48px;
+    }
+  }
+  .button-group {
+    display: flex;
+    flex-wrap: wrap;
+    .my-postal-code {
+      margin-bottom: 16px;
+      @media (min-width: $tablet) {
+        margin: 0;
+        margin-right: 24px;
+      }
+    }
+    @media (min-width: $tablet) {
+      justify-content: center;
+      .my-postal-code, .custom-button_red {
+        max-width: 338px;
+      }
+    }
+  }
+  .custom-button_red {
+    width: 100%;
+  }
+}

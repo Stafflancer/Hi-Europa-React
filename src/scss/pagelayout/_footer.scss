@@ -1,0 +1,89 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 38px;
+  background: $footer;
+  @media (min-width: $large) {
+    padding: 40px 150px;
+  }
+  .logo {
+    display: none;
+    @media (min-width: $large) {
+      display: block;
+      align-self: flex-start;
+      width: 131px;
+      margin-bottom: 32px;
+    }
+  }
+  .nav-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    @media (min-width: $large) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      .break-line {
+        display: none;
+      }
+      .service-tag {
+        order: 1;
+        margin: 0;
+        height: fit-content;
+      }
+    }
+  }
+  .nav-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @media (min-width: $large) {
+      align-items: flex-start;
+    }
+    li {
+      margin-bottom: 24px;
+    }
+    a {
+      @extend .body-xl-brand-bold;
+      color: $white;
+    }
+  }
+  .service-tag {
+    margin-top: 8px;
+    margin-bottom: -8px;
+  }
+  .break-line {
+    width: 40px;
+    height: 4px;
+    border-radius: 12px;
+    background: $white;
+    margin: 40px 0;
+  }
+  .terms-of-service {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @media (min-width: $large) {
+      align-items: flex-start;
+    }
+    li:not(:last-child) {
+      margin-bottom: 40px;
+    }
+    a {
+      @extend .body-sm;
+      text-align: center;
+      color: $white;
+      border-bottom:  1px solid $white;
+    }
+  }
+  .description {
+    @extend .body-sm;
+    text-align: center;
+    color: $white;
+    @media (min-width: $large) {
+      text-align: left;
+    }
+  }
+}

@@ -1,0 +1,102 @@
+.api-content-wrap {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.intro-step {
+  .api-title {
+    padding-top: 0;
+  }
+  .code-postal-wrap {
+    width: min-content;
+    margin: 0 auto;
+    @media (max-width: $bp-tablet) {
+      width: 100%;
+    }
+  }
+  label {
+    @extend .body-sm-brand-bold;
+    text-align: left;
+    margin-bottom: 12px;
+  }
+  .custom-input {
+    width: 320px;
+    @media (max-width: $bp-tablet) {
+      width: 100%;
+      margin-bottom: 16px;
+    }
+  }
+  .api-custom-button_red {
+    width: 320px;
+    margin-left: 24px;
+    @media (max-width: $bp-tablet) {
+      margin: 0;
+      width: 100%;
+    }
+  }
+  .description {
+    @extend .body-xl-brand-bold;
+    margin-top: 48px;
+    margin-bottom: 34px;
+    padding: 0 5%;
+  }
+  .process {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    @media (max-width: $bp-tablet) {
+      flex-direction: column;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background: $black;
+      top: 27px;
+      z-index: -1;
+      @media (max-width: $bp-tablet) {
+        width: 2px;
+        height: 100%;
+        left: 27px;
+        top: 0;
+      }
+    }
+    &__item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      @media (max-width: $bp-tablet) {
+        &:not(:last-child) {
+          margin-bottom: 30px;
+        }
+      }
+      &-number {
+        @extend .flex-center-center;
+        flex-shrink: 0;
+        @extend .body-xl-brand-bold;
+        color: $primary-pl;
+        padding-top: 5px;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: $white;
+        border: 3px solid $gray-light;
+      }
+      &-text {
+        @extend .body-md-brand-bold;
+        position: absolute;
+        top: 78px;
+        right: 50%;
+        transform: translateX(50%);
+        width: 180px;
+        @media (max-width: $bp-tablet) {
+          position: static;
+          width: 100%;
+          text-align: left;
+          padding-left: 12px;
+          transform: none;
+        }
+      }
+    }
+  }
+}

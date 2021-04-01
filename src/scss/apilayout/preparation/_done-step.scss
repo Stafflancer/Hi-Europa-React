@@ -1,0 +1,53 @@
+.done-step {
+    text-align: center;
+    .mascot-icon {
+        width: 80px;
+        margin-bottom: 16px;
+    }
+    .title {
+        @extend .h3-headline;
+        margin-bottom: 32px;
+    }
+    .date-time {
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 32px;
+        color: $grey-600;
+        margin-bottom: 8px;
+        span {
+            color: $primary-pl;
+        }
+    }
+    .address {
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 32px;
+        color: $grey-600;
+        margin-bottom: 48px;
+        span {
+            color: $primary-pl;
+        }
+    }
+    .desc {
+        @extend .body-md-brand;
+        &-1 {
+            margin-bottom: 24px;
+        }
+        &-2 {
+            margin-bottom: 32px;
+        }
+    }
+    .thank-you {
+        @extend .body-xl-brand-bold;
+        margin-bottom: 16px;
+    }
+    .back-to-home-page {
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 20px;
+        letter-spacing: 0.15px;
+        text-decoration: underline;
+        cursor: pointer;
+        color: $black;
+    }
+}

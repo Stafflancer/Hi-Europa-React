@@ -1,0 +1,42 @@
+.comments-wrap {
+  background: $secondary-pl;
+  padding: 40px 38px;
+  .title {
+    @extend .h2-headline;
+    margin-bottom: 40px;
+  }
+  .comments-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    .comment-block:not(:last-child) {
+      margin: 0 0 16px 0;
+      @media (min-width: $tablet) {
+        margin: 0 24px 0 0;
+      }
+    }
+  }
+  .comment-block {
+    background: $white;
+    border-radius: 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px;
+    max-width: 478px;
+  }
+  .avatar {
+    position: static;
+    width: 120px;
+    height: 120px;
+    margin-bottom: 24px;
+  }
+  .content {
+    @extend .body-md-brand-bold;
+    margin-bottom: 4px;
+  }
+  .name {
+    @extend .body-md-brand-bold;
+    color: $text-color-1;
+  }
+}

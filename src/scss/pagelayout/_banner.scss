@@ -1,0 +1,100 @@
+.banner {
+  display: flex;
+  position: relative;
+  margin-bottom: 50px;
+  background-image: url("../../assets/img/pngs/banner-bg-mobile.png");
+  background-position:  bottom;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  padding: 56px 40px;
+  @media (min-width: $tablet) {
+    padding: 42px 40px 55px 40px;
+    background-image: url("../../assets/img/pngs/banner-bg-desktop.png");
+    background-repeat: no-repeat;
+    background-size: 100% 125%;
+    justify-content: center;
+  }
+  img {
+    width: 96px;
+    height: 96px;
+    position: absolute;
+    left: 50%;
+    bottom: -25px;
+    transform: translateX(-50%);
+    @media (min-width: $tablet) {
+      width: 140px;
+      height: 140px;
+      position: static;
+      margin-right: 64px;
+      transform: unset;
+    }
+  }
+  .content-wrap {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 980px;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 30px;
+    @media (min-width: $tablet) {
+      margin-bottom: 0;
+    }
+    .title {
+      @extend .h2-headline;
+      color: $white;
+      margin-bottom: 24px;
+      @media (min-width: $tablet) {
+        font-size: 48px;
+        line-height: 56px;
+        text-align: left;
+        margin-bottom: 0;
+      }
+    }
+    .description {
+      @extend .body-xl-brand-bold;
+      color: $white;
+      @media (min-width: $tablet) {
+        text-align: left;
+      }
+    }
+  }
+}
+.banner.home-page {
+  padding: 40px;
+  img {
+    width: 172px;
+    height: 172px;
+    bottom: -42px;
+    @media (min-width: $tablet) {
+      margin-right: 90px;
+    }
+  }
+  .title {
+    @media (min-width: $tablet) {
+      margin-bottom: 24px;
+    }
+  }
+  .content {
+    margin-bottom: 83px;
+    @media (min-width: $tablet) {
+      margin-bottom: 0px;
+    }
+  }
+  .description {
+    @media (min-width: $tablet) {
+      margin-bottom: 0px;
+    }
+  }
+}
+.banner.no-image {
+  .content {
+    margin: 0;
+  }
+  .title {
+    text-align: center;
+  }
+}

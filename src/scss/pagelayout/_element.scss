@@ -1,0 +1,200 @@
+.page-wrap {
+  background: white;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Baloo Bhaina 2', cursive;
+  overflow: hidden;
+}
+.page-container {
+  flex: 1;
+  padding-top: 102px;
+  @media (max-width: $bp-tablet) {
+    padding-top: 104px;
+  }
+}
+ul {
+  list-style: none;
+  margin: 0 !important;
+  padding: 0 !important;
+  li a {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+button {
+  border: none;
+}
+input:focus, select:focus {
+  outline: none;
+}
+.icon {
+  font-family: 'FontAwesome' !important;
+  font-weight: normal;
+}
+.custom-button {
+  height: 56px;
+  line-height: 56px;
+  border-radius: 10px 22px;
+  padding: 0 16px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  cursor: pointer;
+  &_white {
+    @extend .custom-button;
+    background: $white;
+    color: $primary-pl;
+    &:hover {
+      color: $primary-pl;
+      text-decoration: none;
+    }
+  }
+  &_red {
+    @extend .custom-button;
+    background: $primary-pl;
+    color: $white;
+    &:hover {
+      color: $white;
+      text-decoration: none;
+    }
+  }
+}
+.api-custom-button {
+  @extend .body-md-brand-bold;
+  height: 56px;
+  line-height: 56px;
+  border-radius: 10px 22px;
+  padding: 0 16px;
+  cursor: pointer;
+  &_white {
+    @extend .api-custom-button;
+    background: $white;
+    color: $primary-pl;
+    border: 2px solid $primary-pl;
+    &:hover {
+      color: $primary-pl;
+      text-decoration: none;
+    }
+  }
+  &_red {
+    @extend .api-custom-button;
+    background: $primary-pl;
+    color: $white;
+    &:hover {
+      color: $white;
+      text-decoration: none;
+    }
+  }
+}
+.custom-input {
+  @extend .body-md-brand-bold;
+  width: 100%;
+  height: 56px;
+  line-height: 56px;
+  text-align: left;
+  padding: 0 16px;
+  border: 2px solid $gray-light;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+.custom-radio {
+  position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid $gray-light;
+  flex-shrink: 0;
+  cursor: pointer;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    bottom: 50%;
+    left: 50%;
+    transition: all .1s;
+    background: $black;
+    border-radius: 50%;
+  }
+  & + label {
+    cursor: pointer;
+  }
+}
+.custom-radio:checked::before {
+  top: 4px;
+  right: 4px;
+  bottom: 4px;
+  left: 4px;
+}
+.custom-checkbox {
+  position: relative;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  cursor: pointer;
+  border: 2px solid #000000;
+  border-radius: 4px;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    bottom: 50%;
+    left: 50%;
+    transition: all .1s;
+    background: $black;
+  }
+  &:checked::before {
+    top: 2px;
+    right: 2px;
+    bottom: 2px;
+    left: 2px;
+  }
+  & + label {
+    cursor: pointer;
+  }
+}
+.flex-col-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.flex-row-center {
+  display: flex;
+  justify-content: center;
+  @media (max-width: $bp-tablet) {
+    flex-direction: column;
+  }
+}
+.flex-center-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-wrap {
+  display: flex;
+  flex: wrap;
+  justify-content: center;
+}
+.my-postal-code {
+  height: 56px;
+  width: 100%;
+  border: 2px solid $black;
+  line-height: 56px;
+  text-align: center;
+  padding: 0 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 24px;
+}

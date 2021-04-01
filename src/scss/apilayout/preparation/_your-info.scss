@@ -1,0 +1,62 @@
+.your-info-step {
+  max-width: 388px;
+  margin: 0 auto;
+  .information-form {
+    display: flex;
+    flex-direction: column;
+  }
+  label {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    text-align: left;
+    &::before, &::after {
+      display: none !important;
+    }
+  }
+  .gender {
+    margin-bottom: 34px;
+  }
+  .owner-or-tenant {
+    margin-bottom: 40px;
+  }
+  input[type="radio"] {
+    margin-right: 12px;
+  }
+  input[type="radio"] + label {
+    margin: 0;
+    line-height: unset;
+  }
+  .input-wrap {
+    margin-bottom: 24px;
+  }
+  .information-form {
+    .note {
+      margin-top: -12px;
+    }
+  }
+  .who-come {
+    margin-top: 32px;
+    margin-bottom: 40px;
+  }
+  .i-there {
+    margin-bottom: 16px;
+  }
+  .accept-temrs-policy {
+    display: flex;
+    margin-bottom: 40px;
+    label {
+      margin: 0;
+      @extend .body-sm;
+      color: $grey-700;
+      text-align: left;
+      margin-left: 20px;
+      a {
+        color: $primary-pl;
+      }
+    }
+  }
+  .api-custom-button_red {
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,211 @@
+.header {
+  width: 100%;
+  padding: 15px 40px;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  background: $white;
+  @media (max-width: $bp-large) {
+    padding: 16px 24px;
+    justify-content: space-between;
+  }
+  .hamburger-button {
+    display: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 100;
+    @media (max-width: $bp-large) {
+      display: block;
+    }
+    .bar {
+      width: 36px;
+      height: 8px;
+      background: $primary-pl;
+      border-radius: 20px;
+      margin-bottom: 4px;
+      transition: 0.4s;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  .hamburger-button.open {
+    .bar {
+      background: white;
+      &-1 {
+        transform: rotate(45deg) translate(9px, 8px);
+      }
+      &-2 {
+        opacity: 0;
+      }
+      &-3 {
+        transform: rotate(-45deg) translate(9px, -8px);
+      }
+    }
+  }
+  .hamburger-button.open-lang {
+    .bar {
+      background: $primary-pl;
+      &-1 {
+        transform: rotate(45deg) translate(9px, 8px);
+      }
+      &-2 {
+        opacity: 0;
+      }
+      &-3 {
+        transform: rotate(-45deg) translate(9px, -8px);
+      }
+    }
+  }
+  .logo {
+    width: 95px;
+    @media (max-width: $bp-tablet) {
+    }
+  }
+  .nav-wrap {
+    flex: 1;
+    @media (max-width: $bp-large) {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      z-index: 10;
+      width: 100%;
+      height: 100vh;
+      background: $primary-pl;
+      transition: 0.4s;
+      overflow-y: scroll;
+    }
+    ul {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding-left: 40px !important;
+      @media (max-width: $bp-large) {
+        margin-top: 180px !important;
+        flex-direction: column;
+        padding: 0 !important;
+      }
+      li {
+        margin-right: 32px;
+        @media (max-width: $bp-large) {
+          margin: 0 0 40px 0;
+        }
+        &:last-child {
+          margin-right: 54px;
+          @media (max-width: $bp-large) {
+            margin: 0 0 111px 0;
+          }
+        }
+        a {
+          color: $inactive;
+          font-weight: 600;
+          font-size: 18px;
+          line-height: 28px;
+          @media (max-width: $bp-large) {
+            color: $white;
+            font-weight: 600;
+            font-size: 32px;
+            line-height: 40px;
+            text-align: center;
+          }
+        }
+      }
+      li {
+        a.active {
+          color: $black;
+          @media (max-width: $bp-large) {
+            color: $white;
+          }
+        }
+      }
+    }
+    ul.homepage li a {
+      color: $black;
+    }
+    .service-tag {
+      margin: 0 auto;
+      display: none;
+      @media (max-width: $bp-large) {
+        display: flex;
+      }
+    }
+  }
+  .nav-wrap.open {
+    left: 0;
+  }
+  .lang-switcher {
+    position: relative;
+    &__popup {
+      padding: 44px 40px;
+      background: $white;
+      box-shadow: 4px 4px 4px rgba(191, 191, 191, 0.25);
+      border-radius: 16px;
+      position: absolute;
+      right: 0;
+      visibility: hidden;
+      @media (max-width: $bp-large) {
+        position: fixed;
+        width: 100%;
+        z-index: 99;
+        top: 0;
+        left: 100%;
+        height: 100vh;
+        padding: 0;
+        padding-top: 180px;
+        border-radius: unset;
+        display: flex;
+        justify-content: center;
+        transition: 0.4s;
+        visibility: visible;
+      }
+      .lang-list {
+        width: max-content;
+      }
+      .lang-list .lang-item:not(:last-child) {
+        margin-bottom: 43px;
+      }
+      .lang-item {
+        img {
+          width: 36px;
+          margin-right: 24px;
+        }
+        a {
+          font-size: 24px;
+          font-weight: 600;
+          color: $primary-pl;
+          line-height: 32px;
+        }
+      }
+      &:hover {
+        visibility: visible;
+      }
+    }
+    &__icon {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 1.6px;
+      cursor: pointer;
+      img {
+        width: 30px;
+        opacity: 0.5;
+      }
+      .active {
+        position: absolute;
+        top: 25%;
+        right: 8px;
+        z-index: 1;
+        opacity: 1;
+      }
+      &:hover + .lang-switcher__popup {
+        visibility: visible;
+      }
+    }
+  }
+  .lang-switcher.open .lang-switcher__popup {
+    left: 0;
+  }
+}

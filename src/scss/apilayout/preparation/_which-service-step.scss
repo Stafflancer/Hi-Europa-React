@@ -1,0 +1,31 @@
+.which-service-step {
+  .api-title {
+    padding-top: 0;
+  }
+  .services-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    @media (max-width: $bp-tablet) {
+      grid-template-columns: 1fr;
+    }
+  }
+  .service-item {
+    display: flex;
+    align-items: center;
+    padding: 24px;
+    width: 100%;
+    border: 2px solid $gray-light;
+    border-radius: 16px;
+    cursor: pointer;
+    &__icon {
+      width: 64px;
+      height: 64px;
+    }
+    &__name {
+      @extend .body-md-brand-bold;
+      padding-left: 24px;
+      margin: 0;
+    }
+  }
+}
