@@ -1,0 +1,57 @@
+.declaration-de-sinistre-result-page {
+  padding: 50px 2rem;
+  .content-wrap {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .mascot-icon {
+    width: 80px;
+    margin-bottom: 16px;
+  }
+  .title {
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 600;
+    margin-bottom: 32px;
+  }
+  .head-line {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 600;
+    margin: 0;
+  }
+  .contract-id {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 600;
+    color: $inactive;
+    span {
+      color: $primary-pl;
+    }
+    margin-bottom: 32px;
+  }
+  .text-line {
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 24px;
+    text-align: center;
+    padding: 0 10px;
+    @media (min-width: $tablet) {
+      padding: 0 120px;
+    }
+  }
+  .thank-you {
+    margin-bottom: 16px;
+  }
+  .back-to-home-page {
+    font-size: 16px;
+    line-height: 20px;
+    text-decoration: underline;
+    cursor: pointer;
+    color: $black;
+    font-weight: 600;
+  }
+}

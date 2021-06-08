@@ -16,7 +16,11 @@ const Marker = (props) => {
     return (
       <div>
         <div style={style}></div>
-        <label style={label}>{props.value}</label>
+        { props.showLabel == "show" ? (
+          <label style={label}>{props.value}</label>
+        ) : ( 
+          ""
+        )}
       </div>
     );
 };

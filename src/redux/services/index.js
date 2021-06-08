@@ -6,3 +6,8 @@ export * from './imaService';
 export * from './quotationService';
 export * from './contractService';
 export * from './resiliationService';
+export * from './interventionService';
+export * from './imaQuotationService';
+export * from './residentService';
+export * from './prospectService';
+export * from './imaUserService';

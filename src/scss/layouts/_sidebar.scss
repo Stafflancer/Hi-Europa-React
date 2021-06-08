@@ -238,6 +238,26 @@
 
 .main-sidebar-body {
   padding: 0;
+  overflow-x: auto;
+  /* width */
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -262,10 +282,10 @@
 
 .main-sidebar-body .nav-label {
   text-transform: uppercase;
-  font-size: 11.49px;
+  font-size: 18px;
   font-weight: 500;
   letter-spacing: .5px;
-  color: $white-3;
+  color: $black-8;
   padding: 10px 0px 0 0;
 }
 
@@ -317,7 +337,7 @@
     padding: 0 9px 0 4px;
     font-weight: 400;
     font-size: 14px;
-    color: $white-4;
+    color: $black-9;
 
     .sidemenu-icon {
       font-size: 17px;

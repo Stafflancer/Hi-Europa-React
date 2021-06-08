@@ -5,13 +5,12 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import ApiObject from "../ApiObject";
 import checkedIcon from "assets/img/icons/checked.svg";
 import  xbuttonIcon from "assets/img/icons/x-button.svg";
-
-import blueMascotQuestionIcon from "assets/img/icons/blue-mascot_question.svg";
+import { useTranslation } from "react-i18next";
 
 const InsuranceStatusYes = (props) => {
-
+  const { t } = useTranslation();
   const handleClick = (type) => {
-    props.update("insurance_duration", type);
+    props.update("insuranceDuration", type);
     if(type == "yes") {
       props.goToStep(10);
     } else {
@@ -22,26 +21,24 @@ const InsuranceStatusYes = (props) => {
 
   return (
     <Container>
-      <ApiTitle content="Est-ce que cette assurance a PLUS de 8 mois ?" />
+      <ApiTitle content={t("devis.insuranceStatusYes.Title")} />
       <div className="api-content">
         <Row>
           <Col sm={12} md={6} lg={6}>
-            <ApiObject image={checkedIcon} content="Oui, elle a PLUS de 8 mois" onClick={() => handleClick("yes")} />
+            <ApiObject image={checkedIcon} content={t("devis.insuranceStatusYes.Yes")} onClick={() => handleClick("yes")} />
           </Col>
           <Col sm={12} md={6} lg={6}>
-          <ApiObject image={xbuttonIcon} content="Non, elle a MOINS de 8 mois" onClick={() => handleClick("no")}/>
+          <ApiObject image={xbuttonIcon} content={t("devis.insuranceStatusYes.No")} onClick={() => handleClick("no")}/>
           </Col>
         </Row>
       </div>
-      <ApiComment content="<p>Le changement d'assurance ne pourra intervenir qu'après la première année d'assurance,
-      sauf dans certains cas (déménagement, mariage etc), Si votre contrat a moins d'1 an, la résiliation devra intervenir au plus tard 2 mois avant la date anniversaire. Après 1 an d'assurance, vous pourrez résilier à tout moment.
-      Nous vous proposons de nous occuper gratuitement de ces démarches de résiliation et nous vous expliquons tout cela en détail après votre souscription.</p>" />
+      <ApiComment content={t("devis.insuranceStatusYes.Comment")} />
       <div className="api-footer">
       <Row>
         <Col>
           <a className="api-back red" href="#" onClick={props.previousStep}>
             <span className="fa-chevron-left icon"></span>
-            <span>Précedent</span>
+            <span>{t("devis.previous-button")}</span>
           </a>
         </Col>
       </Row>

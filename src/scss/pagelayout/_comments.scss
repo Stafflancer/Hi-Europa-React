@@ -6,14 +6,14 @@
     margin-bottom: 40px;
   }
   .comments-list {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    .comment-block:not(:last-child) {
-      margin: 0 0 16px 0;
-      @media (min-width: $tablet) {
-        margin: 0 24px 0 0;
-      }
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+    max-width: 980px;
+    margin: 0 auto;
+    @media (min-width: $tablet) {
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
     }
   }
   .comment-block {
@@ -33,10 +33,13 @@
   }
   .content {
     @extend .body-md-brand-bold;
+    padding: 0 10%;
     margin-bottom: 4px;
   }
   .name {
     @extend .body-md-brand-bold;
     color: $text-color-1;
+    padding: 0 10%;
+    margin-top: auto;
   }
 }

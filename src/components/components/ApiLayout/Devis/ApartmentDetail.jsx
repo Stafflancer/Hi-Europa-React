@@ -1,27 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ApiTitle from "../ApiTitle";
 import ApiComment from "../ApiComment";
 import ApiError from "../ApiError";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 
 const ApartmentDetail = (props) => {
   const [state, setState] = useState({
-    error: "",
+    error: false,
     floors: "",
-    area: ""
+    area: "",
+    floorsEmpty: false,
+    areaEmpty: false
   });
+
+  const { t } = useTranslation();
   const comment = () => {
-    return state.floors == "" ? "<p>Si vous n'êtes pas sûr de la surface exacte, une estimation suffira.</p><p>Si vous êtes en colocation, vous devez indiquer la surface totale de votre appartement.</p>" : "<p>Si vous êtes en colocation, vous devez indiquer la surface totale de votre appartement. L'assurance habitation proposée concerne les appartements de moins de 250m2.</p>";
+    return state.floors == "" ? t("devis.apartmentDetail.Comment1") : t("devis.apartmentDetail.Comment2")
   }
   const handleClick = (e) => {
-    if (state.area > 250 ) {
-      setState(state => ({ ...state, error:"error"}));
-    } else {
-      setState(state => ({ ...state, error:""}));
-      props.update("floors", state.floors);
-      props.update("area", state.area);
-      props.nextStep();
+    if(state.area =="") {
+      setState(state => ({ ...state, areaEmpty:true}));
     }
+    if(state.floors == "") {
+      setState(state => ({ ...state, floorsEmpty:true}));
+    }
+    if(state.area !=="" && state.floors !=="") {
+      if (state.area > 250 ) {
+        setState(state => ({ ...state, error:true}));
+        
+      } else {
+        setState(state => ({ ...state, error:false}));
+        props.update("floors", state.floors);
+        props.update("area", state.area);
+        props.nextStep();
+      }
+    } else {
+      setState(state => ({ ...state, error:false}));
+    }
+    
   };
 
   const handleChange = (e) => {
@@ -35,36 +52,62 @@ const ApartmentDetail = (props) => {
         }
     }
   }
+
+  useEffect(() => {
+    let area = state.area;
+    let floors = state.floors;
+    if(area.trim() !== "") {
+      setState(state => ({ ...state, areaEmpty: false }));
+    }
+    if(floors !== "") {
+      setState(state => ({ ...state, floorsEmpty: false }));
+    } 
+  }, [state.area, state.floors])
   return (
     <Container>
-      <ApiTitle content="Dites-nous en plus sur cet appartement ..." />
+      <ApiTitle content={t("devis.apartmentDetail.Title")} />
       <div className="api-content">
         <Row>
           <Col xs={12} sm={6}>
-          <Form.Label className="api-label">Étage où se situe l’appartement</Form.Label>
-          <Form.Control as="select" className={`api-input ${state.floors ? "" : "placeholder"}`} name="floors" value={state.floors} onChange={handleChange}>
-            <option value="" disabled>Sélectionner l’étage</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="Dernier étage">Dernier étage</option>
+          <Form.Label className="api-label">{t("devis.apartmentDetail.floorLabel")}<span className="api-required">*</span></Form.Label>
+          <Form.Control as="select" className={`api-input ${state.floorsEmpty ? "api-error" : ""} ${state.floors ? "" : "placeholder"}`} name="floors" value={state.floors} onChange={handleChange}>
+            <option value="" disabled>{t("devis.apartmentDetail.floorPlaceholder")}</option>
+            <option value="Rez de Chaussée">{t("devis.apartmentDetail.firstFloor")}</option>
+            <option value="Intermédiaire">{t("devis.apartmentDetail.interFloor")}</option>
+            <option value="Dernier Etage">{t("devis.apartmentDetail.lastFloor")}</option>
           </Form.Control>
-          </Col>
-          <Col xs={12} sm={6}>
-          <Form.Label className="api-label">Surface habitable en m2</Form.Label>
-          <Form.Control type="text" name="area" value={state.area} onChange={handleChange} className="api-input" placeholder="Surface habitable en m2" />
-          </Col>
-        </Row>
-        {state.error ?
+          {state.floorsEmpty ?
            <Row>
              <Col>
-              <ApiError content="L'assurance habitation proposée concerne les appartements de moins de 250m2."/>
+              <ApiError content={t("devis.Required")}/>
              </Col>
            </Row>
             : ""
         }
+          </Col>
+          <Col xs={12} sm={6}>
+          <Form.Label className="api-label">{t("devis.apartmentDetail.areaLabel")}<span className="api-required">*</span></Form.Label>
+          <Form.Control type="text" name="area" value={state.area} onChange={handleChange} className={`api-input ${state.error || state.areaEmpty ? "api-error" : ""}`} placeholder={t("devis.apartmentDetail.areaPlaceholder")} />
+          {state.areaEmpty ?
+           <Row>
+             <Col>
+              <ApiError content={t("devis.Required")}/>
+             </Col>
+           </Row>
+            : ""
+        }
+        {state.error ?
+           <Row>
+             <Col>
+              <ApiError content={t("devis.apartmentDetail.Error")}/>
+             </Col>
+           </Row>
+            : ""
+        }
+          </Col>
+        </Row>
+        
+
       </div>
 
       <ApiComment content= {comment()} />
@@ -73,13 +116,13 @@ const ApartmentDetail = (props) => {
         <Col>
           <a className="api-back red" href="#" onClick={props.previousStep}>
             <span className="fa-chevron-left icon"></span>
-            <span>Précedent</span>
+            <span>{t("devis.previous-button")}</span>
           </a>
         </Col>
       </Row>
       <Row>
       <Col>
-      <Button className="api-button pull-right" bsPrefix="api" variant="small" onClick={handleClick} disabled={!state.floors || !state.area}>Étape suivante</Button>
+      <Button className="api-button pull-right" bsPrefix="api" variant="small" onClick={handleClick}>{t("devis.next-button")}</Button>
       </Col>
       </Row>
       </div>

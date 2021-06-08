@@ -1,96 +1,49 @@
 import React, { useState } from "react";
-// import logo from "../../../../assets/img/brand/logo.png";
-// import { connect } from "react-redux";
-// import { authActions } from "../../../../redux/actions/authActions";
-// import loginLogo from "../../../../assets/img/svgs/user.svg";
-// import { useHistory } from "react-router-dom";
 import Banner from "components/components/PageLayout/Banner";
-import GetMoreInfo from "components/components/PageLayout/GetMoreInfo";
 import JoinUs from "components/components/PageLayout/JoinUs";
+import aboutUsIcon from "assets/img/icons/about-us-icon.svg";
+import { useTranslation } from "react-i18next";
+import content from "translations/fr.json";
+import _Helmet from "components/components/_Helmet";
+import exclamationMark from "assets/img/icons/exclamation-mark.gif";
+import CustomLink from "components/components/CustomLink";
 
 const AboutUsPage = (props) => {
+  const _sections = content.translations["Qui sommes-nous Page"]["section"];
+  const sections = Object.values(_sections);
+  const { t } = useTranslation();
   return (
     <div className="about-us-page">
-      <Banner title="Qui sommes-nous ?"></Banner>
-      <div className="content-wrap">
-        <h4 className="title">Notre raison d'être</h4>
-        <p className="content">
-          Chez Hi Europa, nous pensons que l’attention sincère portée à l’autre
-          permet un monde où chacun trouve sa place. Nous accompagnons ceux qui
-          viennent de loin en essayant de simplifier leur vie quotidienne et
-          d’effacer les obstacles qu’ils rencontrent en France ou en Europe. Nous
-          apportons notre soutien dans les langues et les cultures d’origine de
-          ces communautés.
-        </p>
-        <h4 className="title">Notre raison d'être</h4>
-        <p className="content">
-          Chez Hi Europa, nous pensons que l’attention sincère portée à l’autre
-          permet un monde où chacun trouve sa place. Nous accompagnons ceux qui
-          viennent de loin en essayant de simplifier leur vie quotidienne et
-          d’effacer les obstacles qu’ils rencontrent en France ou en Europe. Nous
-          apportons notre soutien dans les langues et les cultures d’origine de
-          ces communautés.
-        </p>
-        <h4 className="title">Notre raison d'être</h4>
-        <p className="content">
-          Chez Hi Europa, nous pensons que l’attention sincère portée à l’autre
-          permet un monde où chacun trouve sa place. Nous accompagnons ceux qui
-          viennent de loin en essayant de simplifier leur vie quotidienne et
-          d’effacer les obstacles qu’ils rencontrent en France ou en Europe. Nous
-          apportons notre soutien dans les langues et les cultures d’origine de
-          ces communautés.
-        </p>
-        <h4 className="title">Notre raison d'être</h4>
-        <p className="content">
-          Chez Hi Europa, nous pensons que l’attention sincère portée à l’autre
-          permet un monde où chacun trouve sa place. Nous accompagnons ceux qui
-          viennent de loin en essayant de simplifier leur vie quotidienne et
-          d’effacer les obstacles qu’ils rencontrent en France ou en Europe. Nous
-          apportons notre soutien dans les langues et les cultures d’origine de
-          ces communautés.
-        </p>
-        <h4 className="title">Notre raison d'être</h4>
-        <p className="content">
-          Chez Hi Europa, nous pensons que l’attention sincère portée à l’autre
-          permet un monde où chacun trouve sa place. Nous accompagnons ceux qui
-          viennent de loin en essayant de simplifier leur vie quotidienne et
-          d’effacer les obstacles qu’ils rencontrent en France ou en Europe. Nous
-          apportons notre soutien dans les langues et les cultures d’origine de
-          ces communautés.
-        </p>
-        <h4 className="title">Notre raison d'être</h4>
-        <p className="content">
-          Chez Hi Europa, nous pensons que l’attention sincère portée à l’autre
-          permet un monde où chacun trouve sa place. Nous accompagnons ceux qui
-          viennent de loin en essayant de simplifier leur vie quotidienne et
-          d’effacer les obstacles qu’ils rencontrent en France ou en Europe. Nous
-          apportons notre soutien dans les langues et les cultures d’origine de
-          ces communautés.
-        </p>
-        <h4 className="title">Notre raison d'être</h4>
-        <p className="content">
-          Chez Hi Europa, nous pensons que l’attention sincère portée à l’autre
-          permet un monde où chacun trouve sa place. Nous accompagnons ceux qui
-          viennent de loin en essayant de simplifier leur vie quotidienne et
-          d’effacer les obstacles qu’ils rencontrent en France ou en Europe. Nous
-          apportons notre soutien dans les langues et les cultures d’origine de
-          ces communautés.
-        </p>
+      <_Helmet pageName="about us"></_Helmet>
+      <Banner
+        title={t("Qui sommes-nous Page.banner-title")}
+        img={aboutUsIcon}
+      ></Banner>
+      <div className="content-wrapper">
+        {sections.map((item, index) => (
+          <div key={index}>
+            <h4 className="title">
+              {t(`Qui sommes-nous Page.section.section ${index + 1}.title`)}
+            </h4>
+            <p className="content">
+              {t(`Qui sommes-nous Page.section.section ${index + 1}.message`)}
+            </p>
+          </div>
+        ))}
       </div>
-      <GetMoreInfo></GetMoreInfo>
+      <div className="get-more-info">
+        <div className="chat-with-us flex-col-center">
+          <h4 className="title">{t("Talk to us - title")}</h4>
+          <img src={exclamationMark} alt="exclamation mark icon" />
+          <div className="content">{t("Talk to us - message")}</div>
+          <CustomLink to="/contactpage" className="custom-button_white">
+            {t("Talk to us - CTA")}
+          </CustomLink>
+        </div>
+      </div>
       <JoinUs></JoinUs>
     </div>
   );
 };
 
-// function mapStateToProps(state) {
-//   const { loggingIn, loggedIn, failure } = state.authReducer;
-//   return { loggingIn, loggedIn, failure };
-// }
-
-// const mapDispatchToProps = (d) => ({
-//   login: (data) => d(authActions.login(data)),
-// });
-
-// export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
 export default AboutUsPage;

@@ -10,7 +10,8 @@
     font-weight: 600;
     line-height: 20px;
     text-align: left;
-    &::before, &::after {
+    &::before,
+    &::after {
       display: none !important;
     }
   }
@@ -57,6 +58,9 @@
     }
   }
   .api-custom-button_red {
+    margin: 0 auto;
+  }
+  .loader-custom {
     margin: 0 auto;
   }
 }

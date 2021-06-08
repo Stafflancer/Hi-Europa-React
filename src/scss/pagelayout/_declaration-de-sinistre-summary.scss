@@ -1,0 +1,107 @@
+.declaration-de-sinistre-summary-page {
+  padding: 50px 2rem;
+  .title {
+    font-size: 40px;
+    line-height: 40px;
+    font-weight: 600;
+    margin-bottom: 48px;
+    text-align: center;
+  }
+  .api-content-wrap {
+    max-width: 388px;
+    margin: 0 auto;
+  }
+  .block-title {
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 600;
+    margin-bottom: 32px;
+  }
+  .info-block {
+    margin-bottom: 48px;
+    .info-line {
+      display: flex;
+      justify-content: space-between;
+      &:not(:last-child) {
+        margin-bottom: 16px;
+      }
+      .title {
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 600;
+        color: $inactive;
+      }
+      .info {
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 600;
+      }
+      p {
+        margin: 0;
+      }
+    }
+  }
+  .person-block {
+    margin-top: -16px;
+    .title {
+      font-size: 16px;
+      line-height: 20px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      text-align: left;
+    }
+  }
+  .description-block {
+    margin-bottom: 56px;
+  }
+  .description-item {
+    margin-bottom: 32px;
+    .title {
+      font-size: 16px;
+      line-height: 20px;
+      font-weight: 600;
+      color: $inactive;
+      margin: 0 0 12px 0;
+      text-align: left;
+    }
+    .content {
+      font-size: 16px;
+      line-height: 20px;
+      font-weight: 600;
+      color: $grey-700;
+      text-align: left;
+    }
+  }
+  .checkbox-confirmation {
+    display: flex;
+    margin-bottom: 32px;
+    input {
+      margin-right: 20px;
+    }
+    label {
+      font-size: 16px;
+      line-height: 22px;
+      color: $grey-700;
+    }
+  }
+  .notice {
+    font-size: 16px;
+    line-height: 22px;
+    color: $grey-700;
+    margin-bottom: 48px;
+    a {
+      color: $primary-pl;
+    }
+  }
+  .button-group {
+    display: flex;
+    justify-content: flex-end;
+    .api-custom-button_red {
+      margin-left: 16px;
+    }
+  }
+}
+// @media (min-width: $tablet) {
+//   flex-direction: row;
+//   justify-content: flex-end;
+// }

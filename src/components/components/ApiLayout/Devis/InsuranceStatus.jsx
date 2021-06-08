@@ -5,13 +5,12 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import ApiObject from "../ApiObject";
 import checkedIcon from "assets/img/icons/checked.svg";
 import  xbuttonIcon from "assets/img/icons/x-button.svg";
-
-import blueMascotQuestionIcon from "assets/img/icons/blue-mascot_question.svg";
+import { useTranslation } from "react-i18next";
 
 const InsuranceStatus = (props) => {
-
+  const { t } = useTranslation();
   const handleClick = (type) => {
-    props.update("insurance_status", type);
+    props.update("insuranceStatus", type);
     if(type == "yes") {
       props.goToStep(8);
     } else if (type == "no") {
@@ -21,14 +20,14 @@ const InsuranceStatus = (props) => {
 
   return (
     <Container>
-      <ApiTitle content="Avez-vous déjà souscrit une assurance pour le logement que vous souhaitez assurer ?" />
+      <ApiTitle content={t("devis.insuranceStatus.Title")} />
       <div className="api-content">
         <Row>
           <Col sm={12} md={6} lg={6}>
-            <ApiObject image={checkedIcon} content="Oui, j'assure déjà ce logement" onClick={() => handleClick("yes")} />
+            <ApiObject image={checkedIcon} content={t("devis.insuranceStatus.Yes")} onClick={() => handleClick("yes")} />
           </Col>
           <Col sm={12} md={6} lg={6}>
-          <ApiObject image={xbuttonIcon} content="Non, je n'assure pas encore ce logement" onClick={() => handleClick("no")}/>
+          <ApiObject image={xbuttonIcon} content={t("devis.insuranceStatus.No")} onClick={() => handleClick("no")}/>
           </Col>
         </Row>
       </div>
@@ -37,7 +36,7 @@ const InsuranceStatus = (props) => {
         <Col>
           <a className="api-back red" href="#" onClick={props.previousStep}>
             <span className="fa-chevron-left icon"></span>
-            <span>Précedent</span>
+            <span>{t("devis.previous-button")}</span>
           </a>
         </Col>
       </Row>

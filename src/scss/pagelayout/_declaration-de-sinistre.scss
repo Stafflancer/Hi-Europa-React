@@ -1,0 +1,140 @@
+.declaration-de-sinistre-page {
+  padding: 50px 2rem;
+  .title {
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 38px;
+    margin-bottom: 32px;
+    text-align: center;
+    @media (min-width: $tablet) {
+      font-size: 40px;
+      line-height: 40px;
+    }
+  }
+  .description {
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 32px;
+  }
+  .important-note-title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 16px;
+  }
+  .important-note-content {
+    padding: 25px;
+    border-radius: 24px;
+    background-color: $gray-hover;
+    display: flex;
+    margin-bottom: 24px;
+    .mascot-icon {
+      width: 72px;
+      margin-right: 12px;
+      align-self: flex-start;
+    }
+    .content p:not(:last-child) {
+      margin-bottom: 20px;
+    }
+    .content p {
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+  .api-custom-button_red {
+    width: max-content;
+    margin-left: auto;
+  }
+  .api-custom-button_white {
+    width: max-content;
+    margin-bottom: 18px;
+    @media (min-width: $tablet) {
+      margin-bottom: 0;
+    }
+  }
+  .step {
+    margin-top: 56px;
+    display: none;
+    .description {
+      margin-bottom: 24px;
+    }
+    &.show {
+      display: block;
+    }
+  }
+  .step-title {
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 600;
+    margin-bottom: 32px;
+    .step-number {
+      color: $primary-pl;
+    }
+    .step-amount {
+      color: $inactive;
+    }
+  }
+  .no-label {
+    visibility: hidden;
+  }
+  .input-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 24px;
+    @media (min-width: $tablet) {
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+  }
+  label {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 12px;
+  }
+  .input-description {
+    font-size: 16px;
+    line-height: 20px;
+    margin-top: -12px;
+    margin-bottom: 24px;
+  }
+  .yes-no {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  .yes-no.active {
+    border: 2px solid #75bfca;
+  }
+  .heading {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+  .add-another-person {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 600;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .custom-textarea {
+    margin-bottom: 24px;
+  }
+  .button-group {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    .api-custom-button_red {
+      margin-left: 16px;
+    }
+    @media (min-width: $tablet) {
+      flex-direction: row;
+      justify-content: flex-end;
+    }
+  }
+}

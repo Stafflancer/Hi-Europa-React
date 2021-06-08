@@ -10,17 +10,23 @@
       margin-bottom: 24px;
     }
   }
-  .flex-wrap .chat{
-    margin: 0 0 24px 0;
+  .chat-call-wrap {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    max-width: 1060px;
+    margin: 0 auto;
     @media (min-width: $tablet) {
-      margin: 0 24px 0 0;
+      padding: 0 30px;
+      grid-template-columns: 1fr 1fr;
     }
   }
-  .chat, .telephone {
+  .chat,
+  .telephone {
     width: 100%;
     border: 4px solid $secondary-pl;
     border-radius: 36px;
-    padding: 24px 32px 36px 32px;
+    padding: 24px 20px 36px 20px;
     @media (min-width: $tablet) {
       max-width: 478px;
     }
@@ -39,6 +45,9 @@
       @extend .body-xl-brand-bold;
       margin-bottom: 24px;
     }
+    .chat-us-button {
+      margin-top: auto;
+    }
   }
   .telephone {
     .title {
@@ -49,6 +58,12 @@
       @extend .h3-headline;
       color: $secondary-pl;
       margin-bottom: 32px;
+      span {
+        @extend .body-xl-brand-bold;
+        margin-bottom: 16px;
+        display: block;
+        color: #212529;
+      }
     }
     .working-time {
       @extend .body-xl-brand-bold;
@@ -57,5 +72,8 @@
   }
   .call-us-button {
     margin-top: auto;
+    @media (min-width: $mobile) {
+      display: none;
+    }
   }
 }

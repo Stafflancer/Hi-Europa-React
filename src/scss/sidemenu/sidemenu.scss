@@ -15,7 +15,7 @@
       transition: margin-left 0.45s ease;
     }
 
-    color: $white;
+    color: $black-9;
   }
 
   .nav-item {
@@ -23,7 +23,7 @@
     margin: 6px 0;
   }
 
-  
+
 
   .nav-sub {
     max-height: 0;
@@ -345,8 +345,8 @@
         font-size: 11.49px;
         font-weight: 500;
         letter-spacing: .5px;
-        color: $white-3;
-        padding: 10px 0px 0 0;
+        color: $black-4;
+        padding: 10px 0 0 0;
       }
 
       .sub-txt {
@@ -551,23 +551,23 @@
 }
 
 .main-sidebar-sticky {
-  background: #25233c;
+  background: #fff;
 }
 
 .main-sidebar-body {
   a.nav-item.active .nav-link {
     border-radius: 30px 0 0 30px;
-    background-color: #eaedf7;
+    background-color: #74bfca;
   }
 
   .nav-item.active .nav-link {
-    color: #6259ca;
+    color: #fff;
     &:before, &:after {
-      border-right: 20px solid #25233c;
+      border-right: 20px solid #fff;
     }
 
     .shape1, .shape2 {
-      background: #eaedf7;
+      background: #74bfca;
     }
     i{
       font-size: 18px;

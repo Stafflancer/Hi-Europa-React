@@ -1,0 +1,22 @@
+.about-us-page {
+  .content-wrapper {
+    padding: 56px 35px;
+    max-width: 980px;
+    margin: 0 auto;
+    @media (min-width: $tablet) {
+      padding: 56px 10%;
+    }
+    .title {
+      @extend .h3-headline;
+      color: $primary-pl;
+      margin-bottom: 24px;
+    }
+    .content {
+      @extend .body-xl-brand;
+      margin-bottom: 40px;
+    }
+  }
+  .get-more-info {
+    grid-template-columns: 1fr;
+  }
+}

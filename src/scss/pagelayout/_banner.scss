@@ -3,10 +3,10 @@
   position: relative;
   margin-bottom: 50px;
   background-image: url("../../assets/img/pngs/banner-bg-mobile.png");
-  background-position:  bottom;
+  background-position: bottom;
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  padding: 56px 40px;
+  padding: 56px 30px;
   @media (min-width: $tablet) {
     padding: 42px 40px 55px 40px;
     background-image: url("../../assets/img/pngs/banner-bg-desktop.png");
@@ -47,10 +47,9 @@
       @extend .h2-headline;
       color: $white;
       margin-bottom: 24px;
+      white-space: pre-line;
       @media (min-width: $tablet) {
-        font-size: 48px;
-        line-height: 56px;
-        text-align: left;
+        @include h1-headline;
         margin-bottom: 0;
       }
     }
@@ -64,7 +63,7 @@
   }
 }
 .banner.home-page {
-  padding: 40px;
+  padding: 40px 35px;
   img {
     width: 172px;
     height: 172px;

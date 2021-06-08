@@ -34,7 +34,6 @@
 @import "layouts/profile";
 @import "layouts/iconbar";
 
-
 /* ############### CUSTOM VENDOR STYLES ############### */
 @import "lib/datepicker";
 @import "lib/datetimepicker";
@@ -58,7 +57,6 @@
 @import "template/cryptocurrency";
 @import "template/ecommerce-pages";
 
-
 /* ############### UTILITIES/HELPER CLASSES ############### */
 @import "util/background";
 @import "util/display";
@@ -71,7 +69,6 @@
 @import "util/position";
 @import "util/typography";
 @import "util/width";
-
 
 /* ############### CUSTOM ELEMENT STYLES ############### */
 @import "custom/tags";
@@ -102,7 +99,7 @@
 @import "web-fonts/plugin.css";
 @import "web-fonts/fonts";
 @import "web-fonts/font-awesome/font-awesome.min.css";
-@import '~react-toastify/dist/ReactToastify.css';
+@import "~react-toastify/dist/ReactToastify.css";
 
 /* ########## PAGE LAYOUTS  ########## */
 
@@ -120,12 +117,20 @@
 @import "pagelayout/get-your-quote";
 @import "pagelayout/contact-us";
 @import "pagelayout/FAQ";
+@import "pagelayout/about-us";
+@import "pagelayout/legal-notice";
+@import "pagelayout/zh-typography";
+@import "pagelayout/zh-font-size";
+@import "pagelayout/declaration-de-sinistre";
+@import "pagelayout/declaration-de-sinistre-summary";
+@import "pagelayout/declaration-de-sinistre-result";
 // @import "layouts/footer";
 
 /* ######### API LAYOUTS ############# */
 
 @import "apilayout/_header";
 @import "apilayout/_content";
+@import "apilayout/_toggleButton";
 @import "apilayout/preparation/api-content-wrap";
 @import "apilayout/preparation/intro-step";
 @import "apilayout/preparation/which-service-step";

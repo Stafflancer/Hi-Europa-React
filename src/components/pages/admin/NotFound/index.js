@@ -3,7 +3,7 @@ import React from 'react';
 const NotFound = () => {
   return (
     <div>
-      <div className="page main-signin-wrapper bg-primary construction">
+      <div className="page main-signin-wrapper construction">
         <div className="container ">
           <div className="construction1 text-center details text-white">
             <div className="row align-items-center">

@@ -1,11 +1,16 @@
+.service-tag-wrap:hover {
+  text-decoration: none;
+}
 .service-tag {
   display: flex;
   align-items: center;
   padding: 24px 16px;
   border-radius: 16px;
   background: $secondary-pl;
-  max-width: 338px;
   cursor: pointer;
+  @media (min-width: $tablet) {
+    max-width: 338px;
+  }
   .service-icon {
     width: 48px;
     margin-right: 16px;
@@ -13,10 +18,11 @@
   .service-name {
     margin: 0;
     flex: 1;
-    font-weight: normal;
+    font-weight: 600;
     font-size: 20px;
     line-height: 28px;
     color: $white;
+    text-align: center;
   }
   .icon {
     font-size: 20px;

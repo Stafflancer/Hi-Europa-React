@@ -1,0 +1,227 @@
+.zh_CN {
+  .custom-button {
+    font-size: 20px;
+    &_white {
+      font-size: 20px;
+    }
+    &_red {
+      font-size: 20px;
+    }
+  }
+  .api-custom-button {
+    @extend .body-md-brand-bold_zh;
+    &_white {
+      @extend .body-md-brand-bold_zh;
+    }
+    &_red {
+      @extend .body-md-brand-bold_zh;
+    }
+  }
+  .custom-input {
+    @extend .body-md-brand-bold_zh;
+  }
+  .my-postal-code {
+    font-size: 20px;
+  }
+  .error-message {
+    font-size: 14px;
+  }
+  .all-faq {
+    @extend .body-md-brand-bold_zh;
+    &::before {
+      font-size: 18px;
+    }
+  }
+  .FAQ-wrap {
+    .title {
+      @extend .h2-headline_zh;
+    }
+    li.question {
+      > a::after {
+        font-size: 18px;
+      }
+    }
+    .topic-name {
+      @extend .body-xl-brand-bold_zh;
+    }
+    .question {
+      a {
+        @extend .body-md-brand-bold_zh;
+      }
+    }
+    .show-more {
+      @extend .body-md-brand-bold_zh;
+      &::after {
+        font-size: 18px;
+      }
+    }
+  }
+  .chat-with-us {
+    .title {
+      @extend .h2-headline_zh;
+      @media (min-width: $tablet) {
+        font-size: 28px;
+      }
+    }
+    .content {
+      @extend .body-xl-brand-bold_zh;
+      @media (min-width: $tablet) {
+        font-size: 18px;
+      }
+    }
+  }
+  .know-more-about-us {
+    .title {
+      @extend .h2-headline_zh;
+      @media (min-width: $tablet) {
+        font-size: 28px;
+      }
+    }
+    .content {
+      @extend .body-xl-brand-bold_zh;
+      @media (min-width: $tablet) {
+        font-size: 18px;
+      }
+    }
+  }
+  .header {
+    .nav-wrap {
+      ul {
+        li {
+          a {
+            font-size: 16px;
+            @media (max-width: $bp-large) {
+              font-size: 28px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .intro-content {
+    .content-block {
+      .title {
+        @extend .h3-headline_zh;
+        @media (min-width: $tablet) {
+          font-size: 20px;
+        }
+      }
+      .description {
+        font-size: 18px;
+      }
+    }
+  }
+  .intro-service {
+    .service-block {
+      .description {
+        @extend .body-xl-brand-bold_zh;
+        @media (min-width: $tablet) {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+  .join-us {
+    .logo-wrap {
+      span {
+        font-size: 20px;
+      }
+    }
+  }
+  .service-tag {
+    .service-name {
+      font-size: 18px;
+    }
+  }
+  .about-us-page {
+    .content-wrapper {
+      .title {
+        @extend .h3-headline_zh;
+      }
+      .content {
+        @extend .body-xl-brand_zh;
+      }
+    }
+  }
+  .banner {
+    .content {
+      .title {
+        @extend .h2-headline_zh;
+        @media (min-width: $tablet) {
+          @include h1-headline_zh;
+        }
+      }
+      .description {
+        @extend .body-xl-brand-bold_zh;
+      }
+    }
+  }
+  .comments-wrap {
+    .title {
+      @extend .h2-headline_zh;
+    }
+    .content {
+      @extend .body-md-brand-bold_zh;
+    }
+    .name {
+      @extend .body-md-brand-bold_zh;
+    }
+  }
+  .contact-us {
+    .heading {
+      @extend .body-xl-brand-bold_zh;
+    }
+    .chat {
+      .title {
+        @extend .h3-headline_zh;
+      }
+      .description {
+        @extend .body-xl-brand-bold_zh;
+      }
+    }
+    .telephone {
+      .title {
+        @extend .h3-headline_zh;
+      }
+      .phone-number {
+        @extend .h3-headline_zh;
+      }
+      .working-time {
+        @extend .body-xl-brand-bold_zh;
+      }
+    }
+  }
+  .footer {
+    .nav-bar {
+      a {
+        @extend .body-xl-brand-bold_zh;
+      }
+    }
+    .terms-of-service {
+      a {
+        @extend .body-sm;
+      }
+    }
+    .description {
+      @extend .body-sm_zh;
+    }
+  }
+  .get-your-quote {
+    .intro-sentence {
+      @extend .body-xl-brand-bold_zh;
+    }
+  }
+  .legal-notice-page,
+  .cookie-page,
+  .CGU-page,
+  .privacy-policy-page {
+    .content-wrapper {
+      .title {
+        @extend .h3-headline_zh;
+      }
+      .content {
+        @extend .body-sm_zh;
+      }
+    }
+  }
+}

@@ -5,13 +5,12 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import ApiObject from "../ApiObject";
 import checkedIcon from "assets/img/icons/checked.svg";
 import  xbuttonIcon from "assets/img/icons/x-button.svg";
-
-import blueMascotQuestionIcon from "assets/img/icons/blue-mascot_question.svg";
+import { useTranslation } from "react-i18next";
 
 const InsuranceStatusNo = (props) => {
-
+  const { t } = useTranslation();
   const handleClick = (type) => {
-    props.update("living_duration", type);
+    props.update("livingDuration", type);
     if(type == "yes") {
       props.goToStep(13);
     } else {
@@ -21,24 +20,24 @@ const InsuranceStatusNo = (props) => {
 
   return (
     <Container>
-      <ApiTitle content="Habitez-vous depuis MOINS d’1 mois dans le logement que vous souhaitez assurer ? " />
+      <ApiTitle content={t("devis.insuranceStatusNo.Title")} />
       <div className="api-content">
         <Row>
           <Col sm={12} md={6} lg={6}>
-            <ApiObject image={checkedIcon} content="Oui,  j’y habite depuis MOINS d’1 mois" onClick={() => handleClick("yes")} />
+            <ApiObject image={checkedIcon} content={t("devis.insuranceStatusNo.Yes")} onClick={() => handleClick("yes")} />
           </Col>
           <Col sm={12} md={6} lg={6}>
-          <ApiObject image={xbuttonIcon} content="Non,  j’y habite depuis PLUS d’1 mois" onClick={() => handleClick("no")}/>
+          <ApiObject image={xbuttonIcon} content={t("devis.insuranceStatusNo.No")} onClick={() => handleClick("no")}/>
           </Col>
         </Row>
       </div>
-      <ApiComment content="<p>Lorem ipsum</p>" />
+      <ApiComment content={t("devis.insuranceStatusNo.Comment")} />
       <div className="api-footer">
       <Row>
         <Col>
           <a className="api-back red" href="#" onClick={() => { props.goToStep(7) } }>
             <span className="fa-chevron-left icon"></span>
-            <span>Précedent</span>
+            <span>{t("devis.previous-button")}</span>
           </a>
         </Col>
       </Row>

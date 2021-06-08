@@ -1,6 +1,7 @@
 .Api-page {
   margin: auto;
   padding: 2rem;
+  padding-bottom: 180px;
   .bold {
     font-weight: 600;
   }
@@ -20,6 +21,12 @@
       display: block;
     }
   }
+  .hidden {
+    display: none;
+  }
+  .loading-bar {
+    margin: auto;
+  }
   .api-button {
     color: $white;
     background-color: $primary-pl;
@@ -31,9 +38,25 @@
     &.api-large {
       width: 100%;
     }
+    &.outline {
+      background: $white;
+      color: $primary-pl;
+      border: 2px solid $primary-pl;
+    }
     &:disabled {
       color: $inactive;
       background: $grey-100;
+    }
+    &.disabled {
+      color: $inactive;
+      background: $white;
+      border: 2px solid $gray-light;
+      pointer-events: none;
+      &.insured-price {
+        color: $black;
+        border-color: $black;
+        pointer-events: auto !important;
+      }
     }
   }
 
@@ -47,9 +70,10 @@
       font-weight: 600;
     }
   }
+
   .api-comment {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     flex-direction: row;
     padding: 2rem 0rem;
     margin-bottom: 2rem;
@@ -68,6 +92,10 @@
       margin-top: 2rem;
     }
   }
+  .api-required {
+    color: $primary-pl;
+    margin-left: 3px;
+  }
   .api-content {
     padding: 2rem 0rem;
     margin-bottom: 2rem;
@@ -75,6 +103,12 @@
       font-weight: 600;
       font-size: 1.25rem;
       padding-top: 0.5rem;
+      &.sub-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: $primary-pl;
+        padding-top: 2rem;
+      }
     }
     .api-label {
       font-size: 16px;
@@ -93,6 +127,13 @@
       margin-bottom: 1rem;
       &::placeholder {
         color: $inactive;
+      }
+      &.selectable {
+        text-align: center;
+        cursor: pointer;
+        &.selected {
+          border-color: $secondary-pl;
+        }
       }
     }
     select.api-input {
@@ -118,13 +159,74 @@
       cursor: pointer;
       &:hover {
         border-color: $secondary-pl;
-
       }
       h2 {
         font-size: 20px;
         font-weight: 600;
         padding-left: 20px;
         margin: 0px;
+      }
+    }
+    &.summary {
+      max-width: 600px;
+      margin: auto;
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+
+      .section-title {
+        font-size: 2rem;
+        font-weight: 600;
+        margin: 1rem 0rem;
+      }
+      .sub-title {
+        padding-top: 1rem;
+      }
+      label {
+        color: $grey-600;
+        font-weight: 600;
+        &.api-label {
+          color: $black;
+        }
+      }
+      .api-icon {
+        margin-right: 12px;
+      }
+      .btn-popup {
+        padding-left: 0px;
+        text-decoration: underline;
+        color: #000000;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .row {
+        margin-bottom: 1rem;
+      }
+    }
+    &.conditions {
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+      h2 {
+        margin-bottom: 1rem;
+      }
+      .section-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin: 1rem 0rem;
+      }
+      p {
+        color: $black;
+        font-size: 1.25rem;
+        margin-bottom: 0rem;
       }
     }
   }
@@ -173,6 +275,7 @@
     }
   }
   .api-error {
+    border-color: $primary-pl !important;
     p {
       color: $primary-pl;
     }
@@ -184,9 +287,18 @@
       font-weight: 600;
       margin: 2rem 0rem;
     }
+    h2 {
+      font-size: 1.5rem;
+    }
     p {
+      color: $black;
       font-size: 1.25rem;
       margin-bottom: 2rem;
+    }
+    a {
+      color: $black;
+      font-weight: 600;
+      text-decoration: underline;
     }
     .api-label {
       text-align: left;
@@ -194,135 +306,204 @@
     }
   }
   .m-checkbox {
-  display: flex;
-  align-items: center;
-  padding: .5rem;
-  margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
 
-  &__label {
-    padding: 0rem 1rem;
-    color: $grey-200;
-    cursor: pointer;
-    margin-bottom: 0px;
-  }
-
-  &__input {
-    position: relative;
-    flex-shrink: 0;
-    align-self: flex-start;
-    width: $checkbox__size;
-    height: $checkbox__size;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    outline: none; // TODO: manage :focus
-    cursor: pointer;
-    border: $checkbox__border__size solid $black;
-    border-radius: 4px;
-
-    &::before {
-      content: ' ';
-      position: absolute;
-      top: 50%;
-      right: 50%;
-      bottom: 50%;
-      left: 50%;
-      transition: all .1s;
-      background: $black;
-      border-radius: 3px;
+    &__label {
+      padding: 0rem 1rem;
+      color: $grey-200;
+      cursor: pointer;
+      margin-bottom: 0px;
     }
 
-    &:checked {
+    &__input {
+      position: relative;
+      flex-shrink: 0;
+      align-self: flex-start;
+      width: $checkbox__size;
+      height: $checkbox__size;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      outline: none; // TODO: manage :focus
+      cursor: pointer;
+      border: $checkbox__border__size solid $black;
+      border-radius: 4px;
+
       &::before {
-        top: $checkbox__border__size;
-        right: $checkbox__border__size;
-        bottom: $checkbox__border__size;
-        left: $checkbox__border__size;
-      }
-    }
-
-    &:disabled {
-      border-color: $primary-pl;
-      cursor: default;
-
-      &::before {
-        background-color: $primary-pl;
+        content: " ";
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        bottom: 50%;
+        left: 50%;
+        transition: all 0.1s;
+        background: $black;
+        border-radius: 3px;
       }
 
-      + .m-checkbox__label {
-        color: $primary-pl;
+      &:checked {
+        &::before {
+          top: $checkbox__border__size;
+          right: $checkbox__border__size;
+          bottom: $checkbox__border__size;
+          left: $checkbox__border__size;
+        }
+      }
+
+      &:disabled {
+        border-color: $primary-pl;
         cursor: default;
+
+        &::before {
+          background-color: $primary-pl;
+        }
+
+        + .m-checkbox__label {
+          color: $primary-pl;
+          cursor: default;
+        }
       }
     }
   }
-}
-.result {
-  .api-title {
-    display: block;
-    text-align: center;
-  }
-  .api-content {
-    label {
-      color: $grey-600;
+  .m-radio {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+
+    &__label {
+      padding: 0rem 1rem;
+      color: $black;
+      cursor: pointer;
+      margin-bottom: 0px;
       font-weight: 600;
-      &.api-label {
-        color: $black;
+    }
+
+    &__input {
+      position: relative;
+      flex-shrink: 0;
+      align-self: flex-start;
+      width: $checkbox__size;
+      height: $checkbox__size;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      outline: none; // TODO: manage :focus
+      cursor: pointer;
+      border: $checkbox__border__size solid $black;
+      border-radius: 50%;
+
+      &::before {
+        content: " ";
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        bottom: 50%;
+        left: 50%;
+        transition: all 0.1s;
+        background: $black;
+        border-radius: 50%;
+      }
+
+      &:checked {
+        &::before {
+          top: $checkbox__border__size;
+          right: $checkbox__border__size;
+          bottom: $checkbox__border__size;
+          left: $checkbox__border__size;
+        }
+      }
+
+      &:disabled {
+        border-color: $primary-pl;
+        cursor: default;
+
+        &::before {
+          background-color: $primary-pl;
+        }
+
+        + .m-radio__label {
+          color: $primary-pl;
+          cursor: default;
+        }
       }
     }
+  }
+  .result {
     .api-title {
-      text-align: left;
-      h1 {
-        font-size: 1.5rem;
+      display: block;
+      text-align: center;
+    }
+    .api-content {
+      label {
+        color: $grey-600;
         font-weight: 600;
-       }
-     }
-     .api-insurance {
-       .api-title {
-         text-align: center;
-         padding-bottom: 10px;
-       }
-       .insurrance-box {
-         border: 2px solid #DFDFDF;
-         box-sizing: border-box;
-         border-radius: 16px;
-         text-align: center;
-         padding: 1rem;
-         .price {
-           font-size: 3rem;
-           font-weight: 600;
-         }
-         .api-label {
-           margin-bottom: 0px;
-           &.red {
-             font-size: 1.25rem;
-             color: $primary-pl;
-             line-height: 1rem;
-           }
-         }
-         .api-button {
-           margin-top: 1rem;
-         }
-       }
-     }
+        &.api-label {
+          color: $black;
+        }
+      }
+      .api-title {
+        text-align: left;
+        h1 {
+          font-size: 1.5rem;
+          font-weight: 600;
+        }
+      }
+      .api-insurance {
+        .api-title {
+          text-align: center;
+          padding-bottom: 10px;
+          width: 100%;
+        }
+        .insurrance-box {
+          border: 2px solid #dfdfdf;
+          box-sizing: border-box;
+          border-radius: 16px;
+          text-align: center;
+          padding: 1rem;
+          .price {
+            font-size: 3rem;
+            font-weight: 600;
+          }
+          .api-label {
+            margin-bottom: 0px;
+            &.red {
+              font-size: 1.25rem;
+              color: $primary-pl;
+              line-height: 1rem;
+            }
+          }
+          .api-button {
+            margin-top: 1rem;
+            display: block;
+            text-decoration: none;
+          }
+        }
+      }
     }
     .btn-popup {
       padding-left: 0px;
       text-decoration: underline;
       color: $black;
       font-weight: 600;
+      cursor: pointer;
     }
     .section {
       &.section-info {
         .row {
           padding: 0.5rem 0rem;
+          align-items: center;
         }
         label {
           margin-bottom: 0px;
         }
         .block-detail {
           &.card {
-            max-width: 388px;
-            border: 2px solid #DFDFDF;
+            max-width: 400px;
+            border: 2px solid #dfdfdf;
             box-sizing: border-box;
             border-radius: 16px;
             padding: 0.5rem;
@@ -338,8 +519,8 @@
                 color: $primary-pl;
               }
               &.price-label {
+                width: 100%;
                 margin-top: 4px;
-                margin-right: 1rem;
                 text-align: right;
                 letter-spacing: 0.15px;
                 span {
@@ -355,13 +536,11 @@
       }
       &.section-arrow {
         padding: 2rem 0rem;
+        img {
+          cursor: pointer;
+        }
       }
       &.section-detail {
-        .detail-title {
-          font-size: 1.5rem;
-          font-weight: 600;
-          color: $primary-pl;
-        }
         p {
           color: $grey-700;
         }
@@ -369,17 +548,98 @@
           &.api-input {
             border-color: $black;
             max-width: 290px;
+            cursor: pointer;
           }
         }
-        .option-price {
-          font-size: 1.25rem;
-          font-weight: 600;
-          margin-right: 0.5rem;
+        .option-box {
+          margin-top: 2rem;
+          .row {
+            margin-bottom: 1rem;
+            .option-price {
+              font-size: 1.25rem;
+              font-weight: 600;
+              margin-right: 0.5rem;
+            }
+            a {
+              font-size: 1rem;
+              font-weight: 600;
+              color: $black;
+              text-decoration: underline;
+              margin-left: 0.5rem;
+              &.api-button {
+                display: block;
+                font-size: 1.25rem;
+                font-weight: 600;
+                color: $white;
+                width: 100%;
+                text-decoration: none;
+                text-align: center;
+              }
+            }
+            .price-range {
+              display: flex;
+              border: 2px solid $gray-light;
+              box-sizing: border-box;
+              border-radius: 0.5rem;
+              padding: 0.5rem;
+              justify-content: space-between;
+              span {
+                cursor: pointer;
+              }
+              .price-range-value {
+                font-size: 1.25rem;
+                font-weight: 600;
+                align-self: center;
+                &.disabled {
+                  color: $grey-600;
+                }
+                input {
+                  border: none;
+                  width: 5rem;
+                  text-align: right;
+                }
+              }
+            }
+          }
+        }
+        .api-insurance {
+          .fixed-card {
+            position: fixed;
+            display: block;
+            top: 200px;
+            max-width: 250px;
+            width: 100%;
+            transition-delay: 1s;
+            .col {
+              padding: 0px;
+            }
+            @media (max-width: $bp-tablet) {
+              display: none;
+            }
+          }
         }
       }
     }
     .api-slider {
-      margin: 2rem 0rem 4rem;
+      margin: 2rem 1rem 4rem;
+      width: 95%;
+    }
+  }
+  .container {
+    opacity: 1;
+    .loading-bar {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    &.api-loading {
+      opacity: 0.4;
+      pointer-events: none !important;
+      .loading-bar {
+        display: block;
+      }
     }
   }
 }

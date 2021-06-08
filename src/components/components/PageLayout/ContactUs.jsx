@@ -1,33 +1,49 @@
 import React from "react";
 import chatIcon from "assets/img/icons/chat-icon.svg";
+import { useTranslation } from "react-i18next";
 
 const ContactUs = () => {
+  const { t } = useTranslation();
+  const showChatBox = () => {
+    const chatBox = document.querySelector(
+      '[title="Button to launch messaging window"]'
+    );
+    chatBox &&
+      chatBox.contentDocument.getElementsByTagName("button")[0].click();
+  };
   return (
     <div className="contact-us">
-      <p className="heading">
-        Vous souhaitez en savoir plus ou vous avez des questions au sujet de
-        l’un de nos services, notre équipe franco-chinoise est prête à vous
-        répondre !
-      </p>
-      <div className="flex-wrap">
+      <p className="heading">{t("Contact Page.promise-phrase")}</p>
+      <div className="chat-call-wrap">
         <div className="chat flex-col-center">
-          <h4 className="title">Par chat</h4>
+          <h4 className="title">{t("Contact Page.chat block - title")}</h4>
           <img src={chatIcon} alt="chat-icon" className="chat-icon" />
           <p className="description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit sed.
+            {t("Contact Page.chat block - message")}
           </p>
-          <div className="custom-button_red chat-us-button">Contactez-nous</div>
+          <div
+            className="custom-button_red chat-us-button"
+            onClick={showChatBox}
+          >
+            {t("Contact Page.chat block - CTA")}
+          </div>
         </div>
         <div className="telephone flex-col-center">
-          <h4 className="title">Par téléphone</h4>
+          <h4 className="title">{t("Contact Page.telephone block - title")}</h4>
           <div className="telephone-info">
-            <p className="phone-number">0800 909 909</p>
+            <p className="phone-number">
+              {t("Contact Page.telephone block - phone")}
+              <span>{t("Contact Page.telephone block - message1")}</span>
+            </p>
             <p className="working-time">
-              Du lundi au samedi,
-              <br /> de 9h30 à 17h00
+              {t("Contact Page.telephone block - message2")}
             </p>
           </div>
-          <div className="custom-button_red call-us-button">Nous téléphonner</div>
+          <a href="tel:+33986011497">
+            <div className="custom-button_red call-us-button">
+              {t("Contact Page.telephone block - CTA")}
+            </div>
+          </a>
         </div>
       </div>
     </div>

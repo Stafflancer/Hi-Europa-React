@@ -6,72 +6,75 @@ module.exports = [
         name: 'dashboard',
         path: '/admin/dashboard',
         icon: 'ti-server'
-      },
+      }
+    ]
+  },
+  {
+    name: 'MRH',
+    links: [
       {
-        name: 'users',
+        name: 'Utilisateurs',
         path: '/admin/user',
         icon: 'fas fa-users'
-      }
-    ]
-  },
-  {
-    name: 'Quotation',
-    links: [
+      },
       {
-        name: 'Quotation',
+        name: 'Devis',
         path: '/admin/quotation',
         icon: 'ti-files'
-      }
-    ]
-  },
-  {
-    name: 'Contract',
-    links: [
+      },
       {
-        name: 'Contract',
+        name: 'Contrats',
         path: '/admin/contract',
         icon: 'ti-files'
-      }
-    ]
-  },
-  {
-    name: 'Resiliation',
-    links: [
+      },
       {
-        name: 'Resiliation',
+        name: 'Résiliation',
         path: '/admin/resiliation',
+        icon: 'ti-files'
+      },
+      {
+        name: 'Residents',
+        path: '/admin/resident',
+        icon: 'fas fa-users'
+      },
+      {
+        name: 'Prospect',
+        path: '/admin/prospect',
         icon: 'ti-files'
       }
     ]
   },
   {
-    name: 'Services',
+    name: 'Dépannage d’urgence',
     links: [
       {
-        name: 'Services',
-        path: '/admin/Services',
-        show: false,
-        icon: 'ti-server',
-        subMenu: [
-          {
-            name: 'Wakam',
-            path: '/admin/wakam',
-            icon: ''
-          },
-          {
-            name: 'Ima',
-            path: '/admin/ima',
-            icon: ''
-          }
-        ]
-      }
+        name: 'Utilisateurs',
+        path: '/admin/ima-user',
+        icon: 'ti-user'
+      },
+      {
+        name: 'Devis',
+        path: '/admin/ima-quotation',
+        icon: 'ti-files'
+      },
+      {
+        name: 'Intervention',
+        path: '/admin/intervention',
+        icon: 'ti-files'
+      },
     ]
   },
   {
-    name: 'settings',
+    name: 'Configuration',
     links: [
       {
-        name: 'My Profile',
+        name: 'Admin',
+        path: '/admin/admin',
+        icon: 'fas fa-users',
+        isAdmin: true
+      },
+      {
+        name: 'Configuration',
         path: '/admin/my-profile',
         icon: 'ti-user'
       }

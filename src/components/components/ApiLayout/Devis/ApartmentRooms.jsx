@@ -4,15 +4,50 @@ import ApiComment from "../ApiComment";
 import ApiError from "../ApiError";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import ApiInputSpinner from "../ApiInputSpinner";
+import { useTranslation } from "react-i18next";
 
 const ApartmentRooms = (props) => {
-  const [state, setState] = useState({ error: "", max:11, min:0, step:1, studio:0, salon:0, library:0, mezzanine:0});
+  const [state, setState] = useState({ error: "", max:10, min:0, step:1, studio:0, salon:0, library:0, mezzanine:0});
+  const { t } = useTranslation();
   const handleClick = () => {
     if ( state.mezzanine + state.library + state.salon + state.studio > state.max ) {
       setState(state => ({ ...state, error:"error"}));
     } else {
       setState(state => ({ ...state, error:""}));
-      props.update("number_rooms", state.mezzanine + state.library + state.salon + state.studio);
+      let rooms = state.mezzanine + state.library + state.salon + state.studio;
+      props.update("rooms", rooms);
+      switch (rooms) {
+        case 1:
+          props.update("capital", 12000);
+          break;
+        case 2:
+          props.update("capital", 18000);
+          break;
+        case 3:
+          props.update("capital", 30000);
+          break;
+        case 4:
+          props.update("capital", 41000);
+          break;
+        case 5:
+          props.update("capital", 51000);
+          break;
+        case 6:
+          props.update("capital", 61000);
+          break;
+        case 7:
+          props.update("capital", 68000);
+          break;
+        case 8:
+          props.update("capital", 75000);
+          break;
+        case 9:
+          props.update("capital", 85000);
+          break;
+        case 10:
+          props.update("capital", 96000);
+          break;
+      }
       props.nextStep();
     }
   };
@@ -26,11 +61,11 @@ const ApartmentRooms = (props) => {
   }
   return (
     <Container>
-      <ApiTitle content="Ok ! Et de combien de pièce est-il composé ?" />
+      <ApiTitle content={t("devis.apartmentRooms.Title")} />
       <div className="api-content">
         <Row>
           <Col md="8" sm="12">
-             <h2>Chambre / Studio</h2>
+             <h2>{t("devis.apartmentRooms.Text2")}</h2>
           </Col>
           <Col md="4" sm="12">
           <ApiInputSpinner roomType="studio" value={state.studio} onPlus={() => handleChange("studio", "Inc")} onMinus={() => handleChange("studio", "Dec")} />
@@ -39,7 +74,7 @@ const ApartmentRooms = (props) => {
         </Row>
         <Row>
           <Col md="8" sm="12">
-            <h2>Salon/ Salle à manger/ Bureau/ Bibliothèque</h2>
+            <h2>{t("devis.apartmentRooms.Text3")}</h2>
           </Col>
           <Col md="4" sm="12">
             <ApiInputSpinner roomType="salon" value={state.salon} onPlus={() => handleChange("salon", "Inc")} onMinus={() => handleChange("salon", "Dec")} />
@@ -47,7 +82,7 @@ const ApartmentRooms = (props) => {
         </Row>
         <Row>
           <Col md="8" sm="12">
-            <h2>Bibliothèque / salle de jeux / bureaux</h2>
+            <h2>{t("devis.apartmentRooms.Text4")}</h2>
           </Col>
           <Col md="4" sm="12">
             <ApiInputSpinner roomType="library" value={state.library} onPlus={() => handleChange("library", "Inc")} onMinus={() => handleChange("library", "Dec")} />
@@ -55,7 +90,7 @@ const ApartmentRooms = (props) => {
         </Row>
         <Row>
           <Col md="8" sm="12">
-            <h2>Mézanine d'une hauteur supérieure à 1m80</h2>
+            <h2>{t("devis.apartmentRooms.Text5")}</h2>
           </Col>
           <Col md="4" sm="12">
             <ApiInputSpinner roomType="mezzanine" value={state.mezzanine} onPlus={() => handleChange("mezzanine", "Inc")} onMinus={() => handleChange("mezzanine", "Dec")} />
@@ -63,7 +98,7 @@ const ApartmentRooms = (props) => {
         </Row>
         <Row>
           <Col md="8" sm="12">
-            <h2>Votre logement est composé de </h2>
+            <h2>{t("devis.apartmentRooms.Result")}</h2>
           </Col>
           <Col md="4" sm="12">
             <ApiInputSpinner roomType="total" value={state.mezzanine + state.library + state.salon + state.studio} />
@@ -73,28 +108,25 @@ const ApartmentRooms = (props) => {
         {state.error ?
            <Row>
              <Col>
-              <ApiError content="L'assurance habitation proposée concerne les appartements de moins de 11 pièces."/>
+              <ApiError content={t("devis.apartmentRooms.Error")}/>
              </Col>
            </Row>
             : ""
         }
       </div>
-      <ApiComment content="<p><span class='bold'>En France, les espaces suivants ne sont pas considerés comme des pièces : </span>cuisine, arrière cuisine, entrée, palier, cage d’escalier, dégagement, couloir, buanderie, dressing, salles d’eau, salles de bain, wc, cellier, cave, grenier, véranda, mezzanines d'une hauteur inférieure à 1 m 80.</p>
-      <p><span class='bold'>Si vous habitez un studio de moins de 40m², </span>ne comptez qu'une pièce. Au-delà de cette surface, comptez deux pièces.</p>
-      <p><span class='bold'>Pour les cuisines ouvertes et intégrées à une pièce de vie </span>(kitchenette, cuisine américaine…), leur surface est à intégrer à celle de la pièce de vie.</p>
-      <p><span class='bold'>L'assurance habitation proposée concerne les appartements de moins de 11 pièces.</span></p>" />
+      <ApiComment content={t("devis.apartmentRooms.Comment")} />
       <div className="api-footer">
       <Row>
         <Col>
           <a className="api-back red" href="#" onClick={props.previousStep}>
             <span className="fa-chevron-left icon"></span>
-            <span>Précedent</span>
+            <span>{t("devis.previous-button")}</span>
           </a>
         </Col>
       </Row>
       <Row>
       <Col>
-      <Button className="api-button pull-right" bsPrefix="api" variant="small" onClick={() => handleClick()} >Étape suivante</Button>
+      <Button className="api-button pull-right" bsPrefix="api" variant="small" onClick={() => handleClick()} disabled={state.mezzanine + state.library + state.salon + state.studio == 0} >{t("devis.next-button")}</Button>
       </Col>
       </Row>
       </div>

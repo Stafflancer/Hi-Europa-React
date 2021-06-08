@@ -7,7 +7,7 @@
     @extend .body-xl-brand-bold;
     margin-bottom: 24px;
     @media (min-width: $tablet) {
-      padding: 0 10%;
+      padding: 0 8%;
       max-width: 980px;
       margin: 0 auto;
       margin-bottom: 48px;
@@ -25,12 +25,21 @@
     }
     @media (min-width: $tablet) {
       justify-content: center;
-      .my-postal-code, .custom-button_red {
+      .my-postal-code,
+      .custom-button_red {
         max-width: 338px;
       }
     }
   }
   .custom-button_red {
     width: 100%;
+  }
+}
+.get-your-quote.no-title {
+  padding: 0 38px;
+  margin-bottom: 40px;
+  @media (min-width: $tablet) {
+    margin-bottom: 64px;
+    margin-top: 0;
   }
 }

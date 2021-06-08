@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import Modal from 'react-bootstrap/Modal'
 import { ToastContainer, toast } from 'react-toastify';
 
-const MyProfile = ({user, updatingUser, getUser, updateUser}) => {
+const MyProfile = ({user, updatingUser, getAuthUser, updateUser}) => {
   const [form, setForm] = useState({});
   const [showChangePasswordModal, setShowChangePasswordModal] = useState(false);
 
@@ -16,7 +16,7 @@ const MyProfile = ({user, updatingUser, getUser, updateUser}) => {
   };
 
   useEffect(() => {
-    Promise.resolve(getUser()).then(function (response) {
+    Promise.resolve(getAuthUser()).then(function (response) {
         setForm(response.data)
       })
   }, []);
@@ -34,7 +34,7 @@ const MyProfile = ({user, updatingUser, getUser, updateUser}) => {
     e.preventDefault();
     const formData = form;
     if(formData) {
-      Promise.resolve(updateUser(formData)).then(function (response) {
+      Promise.resolve(updateUser({data: formData, id: formData.id})).then(function (response) {
         toast.success('Successfully updated!', {
           position: "top-right",
           autoClose: 1500,
@@ -176,7 +176,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = d => ({
-  getUser: () => d(adminActions.getUser()),
+  getAuthUser: () => d(adminActions.getAuthUser()),
   updateUser: (data) => d(adminActions.updateUser(data)),
 });
 

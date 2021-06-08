@@ -1,74 +1,182 @@
-import React, { useState } from "react";
-import ApiTitle from "../ApiTitle";
+import React, { useState, useEffect } from "react";
+import moment from "moment";
+import { useTranslation } from "react-i18next";
+import content from "translations/fr.json";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { userInfoActions } from "redux/actions/userInfoActions";
+import { IMA } from "APIs/IMA";
 
 const Scheduled = (props) => {
+  const { t } = useTranslation();
+  const {
+    serviceId,
+    userInfo: { postCode },
+  } = props;
+  const serviceIncludes =
+    serviceId && content.translations[`${serviceId}`]["service includes"];
+  const dateFormat = "DD/MM/YYYY";
+  const dateTimeFormat = "DD/MM/YYYY hh:mm";
+  let today = moment().format(dateFormat); // 12/05/2021
+  let hour = moment().hour();
+  let minute = moment().minute();
+  // Caculating the default Date-time
+  if (minute <= 30) {
+    minute = 30;
+    hour = hour + 1;
+  } else {
+    minute = 30;
+    hour = hour + 2;
+  }
+  if (hour >= 24) {
+    hour = hour - 24;
+    today = moment().add(1, "d").format(dateFormat);
+  }
+  const [date, setDate] = useState(today); // 12/05/2021
+  const [time, setTime] = useState(`${hour}h${minute}`); // 20h30
+  const [validDate, setValidDate] = useState(true);
+  const [validTime, setValidTime] = useState(true);
+  const [price, setPrice] = useState(null);
+  const minDateTime = moment(
+    `${today} ${hour}h${minute}`,
+    dateTimeFormat
+  ).format(); // 2021-05-12T20:30:00+07:00
+  const maxDate = moment(`${today}`, dateFormat).add(5, "d").format();
+  const selectedDateTime = moment(`${date} ${time}`, dateTimeFormat).format();
+  const selectedDate = moment(`${date}`, dateFormat).format();
+  const validDateTime =
+    validDate &&
+    validTime &&
+    selectedDateTime >= minDateTime &&
+    selectedDate <= maxDate;
+  const handleChange = (e) => {
+    const value = e.target.value;
+    const name = e.target.name;
+    if (name === "intervention-date") {
+      setDate(value);
+      const isValid = moment(`${value}`, dateFormat).isValid();
+      setValidDate(isValid);
+      isValid && props.updateUserInfo({ interventionDate: value });
+    }
+    if (name === "intervention-time") {
+      setTime(value);
+      const isValid = moment(`${value}`, "hh:mm").isValid();
+      setValidTime(isValid);
+      isValid && props.updateUserInfo({ interventionTime: value });
+    }
+  };
+
+  const getPrice = async () => {
+    setPrice(null);
+    if (validDateTime) {
+      const price = await IMA.getPrice({
+        serviceId,
+        selectedDateTime,
+        postCode,
+      });
+      setPrice(price);
+      props.updateUserInfo({ servicePrice: price });
+    }
+  };
+
+  const confirm = () => {
+    props.updateUserInfo({ selectedDateTime });
+    props.nextStep();
+  };
+
+  useEffect(() => {
+    props.updateUserInfo({ interventionDate: date });
+    props.updateUserInfo({ interventionTime: time });
+    props.updateUserInfo({ minDateTime });
+    serviceId && props.updateUserInfo({ serviceId });
+  }, []);
+
+  useEffect(() => {
+    if (serviceId) {
+      getPrice();
+    }
+  }, [date, time]);
+
   return (
     <div className="api-content-wrap scheduled-step">
-      <h2 className="title">Programmer votre intervention</h2>
+      <h2 className="title">{t("IMA Page.Programmer votre intervention")}</h2>
       <section className="diagnostic">
-        <h3 className="heading">Diagnostic</h3>
-        <p className="result">Panne sur chauffe eau électrique</p>
-        <p className="description">
-          Notre plombier procédera à la recherche et à l’identification de la
-          panne pour l’équipement de production d’eau chaude sanitaire spécifié.
-        </p>
+        <h3 className="heading">{t("Diagnostic")}</h3>
+        <p className="result">{t(`${serviceId}.title`)}</p>
+        <p className="description">{t(`${serviceId}.description`)}</p>
       </section>
       <section className="schedule-your-intervention">
-        <h3 className="heading">Programmez votre intervention</h3>
-        <p className="description">
-          Le jour et l’heure vous seront confirmés par le professionnel lors de
-          son premier contact téléphonique. Le tarif de la prestation peut
-          varier en fonction du jour et de l’heure choisis. En cas de difficulté
-          en langue, vous pouvez contacter Hi Europa par notre Chatbot (24 h /
-          24, 7 j / 7), par téléphone ou par mail.
-        </p>
+        <h3 className="heading">
+          {t("IMA Page.Programmer votre intervention")}
+        </h3>
+        <p className="description">{t("IMA Page.intervention description")}</p>
         <div className="date-time row">
           <div className="col-sm-12 col-md-6 date">
-            <label>Jour de l’intervention</label>
-            <input type="text" name="intervention-date" value="12/05/2021" className="custom-input" />
+            <label>{t("IMA Page.intervention date")}</label>
+            <input
+              type="text"
+              name="intervention-date"
+              value={date}
+              className="custom-input"
+              onChange={(e) => handleChange(e)}
+            />
           </div>
           <div className="col-sm-12 col-md-6 time">
-            <label>À partir de </label>
-            <select className="custom-input" name="intervention-time">
-              <option value="1">11h30</option>
-              <option value="2">12h30</option>
-              <option value="3">13h30</option>
-            </select>
+            <label>{t("IMA Page.intervention time")}</label>
+            <div className="select-wrap">
+              <input
+                className="custom-input"
+                name="intervention-time"
+                value={time}
+                onChange={(e) => handleChange(e)}
+              />
+            </div>
           </div>
         </div>
+        {!validDateTime && (
+          <p className="error-message">{t("IMA Page.invalid date time")}</p>
+        )}
       </section>
       <section className="quote">
-        <h3 className="heading">Devis</h3>
-        <p className="price">
-          165,00&euro; <sup>TTC</sup>
-        </p>
-        <p className="note">
-          Pré-paiment, le paiement devient effectif qu'une fois l'intervetion
-          validée et réalisée.{" "}
-        </p>
-        <p className="result">La prestation comprend : </p>
+        <h3 className="heading">{t("IMA Page.Devis")}</h3>
+        {price ? (
+          <p className="price">
+            {price}&euro; <sup>TTC</sup>
+          </p>
+        ) : (
+          <div className="loader-custom"></div>
+        )}
+        <p className="note">{t("prepayment note")}</p>
+        <p className="result">{t("IMA Page.service includes")}</p>
         <ul className="service-includes">
-          <li>Les frais de déplacement</li>
-          <li>La main dœuvre jusqu’à 1h30</li>
-          <li>Le nétoyage du chantier</li>
+          {serviceIncludes &&
+            serviceIncludes.map((item, index) => (
+              <li key={index}>{t(`${serviceId}.service includes.${index}`)}</li>
+            ))}
         </ul>
-        <p className="detail">
-          Les tarifs sont calculés pour des prestations standard. Si votre
-          problème nécessite une réparation spécifique, l’expert estimera la
-          différence de prix une fois sur place. Un accor vous sera demandé et
-          le devis complémentaire sera régler.
-        </p>
+        <p className="detail">{t("IMA Page.note")}</p>
       </section>
       <div className="bottom-group-button">
-        <button className="api-custom-button_white"onClick={props.previousStep}>
-          Annuler
+        <button className="api-custom-button_white" onClick={props.firstStep}>
+          {t("Cancel")}
         </button>
-        <button className="api-custom-button_red" onClick={props.nextStep}>
-          Confirmer l’intervention
+        <button
+          className={`api-custom-button_red ${price ? "" : "disable"}`}
+          onClick={() => confirm()}
+        >
+          {t("IMA Page.confirm intervention")}
         </button>
       </div>
     </div>
   );
 };
 
-export default Scheduled;
+const mapStateToProps = (state) => ({
+  userInfo: state.userInfoReducer.userInfo,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  updateUserInfo: bindActionCreators(userInfoActions.updateUserInfo, dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Scheduled);

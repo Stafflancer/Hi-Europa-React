@@ -1,19 +1,19 @@
 import React, { useState } from "react";
-// import logo from "../../../../assets/img/brand/logo.png";
-// import { connect } from "react-redux";
-// import { authActions } from "../../../../redux/actions/authActions";
-// import loginLogo from "../../../../assets/img/svgs/user.svg";
-// import { useHistory } from "react-router-dom";
 import Banner from "components/components/PageLayout/Banner";
 import JoinUs from "components/components/PageLayout/JoinUs";
 import ContactUs from "components/components/PageLayout/ContactUs";
-
+import contactUsIcon from "assets/img/icons/contact-us-icon.svg";
+import { useTranslation } from "react-i18next";
+import _Helmet from "components/components/_Helmet";
 
 const ContactPage = (props) => {
+  const { t } = useTranslation();
   return (
     <div className="FAQ-page">
+      <_Helmet pageName="contact"></_Helmet>
       <Banner
-        title="Nous contacter"
+        title={t("Contact Page.banner-title")}
+        img={contactUsIcon}
       ></Banner>
       <ContactUs></ContactUs>
       <JoinUs></JoinUs>

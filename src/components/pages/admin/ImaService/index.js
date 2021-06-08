@@ -69,7 +69,7 @@ const ImaService = ({getIma,imaServiceData,pagination}) => {
   return (
     <div>
       <div className="page-header">
-        <div><h2 className="main-content-title tx-24 mg-b-5">Ima Service </h2>
+        <div><h2 className="main-content-title tx-24 mg-b-5">IMA</h2>
           <ol className="breadcrumb">
             <li className="breadcrumb-item"><a href="#">Pages</a></li>
             <li aria-current="page" className="breadcrumb-item active">Ima Service</li>

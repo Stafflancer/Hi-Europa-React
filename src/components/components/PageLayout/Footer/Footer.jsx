@@ -1,57 +1,70 @@
 import React from "react";
-import hieuropaLogo from "assets/img/brand/Hieuropa-logo.svg";
+import hieuropaLogo from "assets/img/brand/Hieuropa-logo.png";
 import ServiceTag from "components/components/PageLayout/ServiceTag";
+import CustomLink from "components/components/CustomLink";
+import homeInsuranceIcon from "assets/img/icons/home-insurance-icon.svg";
+import { useTranslation } from "react-i18next";
 
-class Footer extends React.Component {
-  render() {
-    return (
-      <footer className="footer">
-        <a href="" className="logo">
-          <img src={hieuropaLogo} alt="Logo" />
-        </a>
-        <div className="nav-wrap">
-          <ul className="nav-bar">
-            <li>
-              <a href="">Assurance habitation</a>
-            </li>
-            <li>
-              <a href="">Réparation d’urgence</a>
-            </li>
-            <li>
-              <a href="">Qui sommes-nous</a>
-            </li>
-            <li>
-              <a href="">FAQ</a>
-            </li>
-            <li>
-              <a href="">Contacts</a>
-            </li>
-          </ul>
-          <ServiceTag></ServiceTag>
-          <div className="break-line"></div>
-          <ul className="terms-of-service">
-            <li>
-              <a href="">Mentions légales</a>
-            </li>
-            <li>
-              <a href="">Politique de confidentialité</a>
-            </li>
-            <li>
-              <a href="">Politique relative aux cookies</a>
-            </li>
-          </ul>
-        </div>
+const Footer = () => {
+  const { t } = useTranslation();
+  return (
+    <footer className="footer">
+      <CustomLink to="/" className="logo">
+        <img src={hieuropaLogo} alt="Logo" />
+      </CustomLink>
+      <div className="nav-wrap">
+        <ul className="nav-bar">
+          <li style={{ position: "relative" }}>
+            <CustomLink to="/home-insurance-page">
+              {t("Assurance Habitation")}
+            </CustomLink>
+            <span className="coming-soon-tag">{t("COMING SOON")}</span>
+          </li>
+          <li>
+            <CustomLink to="/emergency-troubleshooting-page">
+              {t("Dépannage Urgence")}
+            </CustomLink>
+          </li>
+          <li>
+            <CustomLink to="/aboutuspage">{t("Qui sommes-nous ?")}</CustomLink>
+          </li>
+          <li>
+            <CustomLink to="/faqpage">{t("FAQ")}</CustomLink>
+          </li>
+          <li>
+            <CustomLink to="/contactpage">{t("Contact")}</CustomLink>
+          </li>
+        </ul>
+        <ServiceTag
+          serviceName={t("Assurance Habitation Déclarer un sinistre")}
+          img={homeInsuranceIcon}
+          to="/declaration-de-sinistre-page"
+          className="invisible"
+        ></ServiceTag>
         <div className="break-line"></div>
-        <p className="description">
-          HiEuropa est une Société par Actions Simplifiée (SAS), au capital de
-          500 000€ et est inscrite au registre du commerce et des sociétés de
-          Paris sous le numéro 837 821 149. Opérant sous la marque HiEuropa, la
-          société est régie par le Code des Assurances et est immatriculée au
-          Registre ORIAS, sous le numéro 18002431.
-        </p>
-      </footer>
-    );
-  }
-}
+        <ul className="terms-of-service">
+          <li>
+            <CustomLink to="/legal-notice">{t("Mentions legales")}</CustomLink>
+          </li>
+          <li>
+            <CustomLink to="/privacy-policy-page">
+              {t("Politique de confidentialité")}
+            </CustomLink>
+          </li>
+          <li>
+            <CustomLink to="/cookies-page">
+              {t("Politique relative aux cookies")}
+            </CustomLink>
+          </li>
+          <li>
+            <CustomLink to="/CGU">CGU</CustomLink>
+          </li>
+        </ul>
+      </div>
+      <div className="break-line"></div>
+      <p className="description">{t("Phrase - status")}</p>
+    </footer>
+  );
+};
 
 export default Footer;

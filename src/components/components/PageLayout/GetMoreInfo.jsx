@@ -1,32 +1,30 @@
 import React from "react";
-import exclamationMark from "assets/img/icons/exclamation-mark.svg";
-import hieuropaLogo from "assets/img/brand/Hieuropa-logo.svg";
-
+import exclamationMark from "assets/img/icons/exclamation-mark.gif";
+import redExclamationMark from "assets/img/icons/red-exclamation-mark.gif";
+import { useTranslation } from "react-i18next";
+import CustomLink from "components/components/CustomLink";
 
 const GetMoreInfo = () => {
+  const { t } = useTranslation();
   return (
     <div className="get-more-info">
       <div className="chat-with-us flex-col-center">
-        <h4 className="title">Besoin de nous parler ?</h4>
+        <h4 className="title">{t("Talk to us - title")}</h4>
         <img src={exclamationMark} alt="exclamation mark icon" />
-        <div className="content">
-          Hi Europa est un service 100% en ligne. Si vous avez des questions,
-          n'hésitez pas à nous contacter directement par chat.
-        </div>
-        <a href="" className="custom-button_white">
-          Contacter-nous
-        </a>
+        <div className="content">{t("Talk to us - message")}</div>
+        <CustomLink to="/contactpage" className="custom-button_white">
+          {t("Talk to us - CTA")}
+        </CustomLink>
       </div>
       <div className="know-more-about-us flex-col-center">
-        <h4 className="title">Aider ceux qui viennent de loin</h4>
-        <img src={hieuropaLogo} alt="logo" />
+        <h4 className="title">{t("Help those who come from far - title")}</h4>
+        <img src={redExclamationMark} alt="logo" />
         <div className="content">
-          Nous pensons que l’attention sincère portée à l’autre permet un monde
-          où chacun trouve sa place.
+          {t("Help those who come from far - message")}
         </div>
-        <a href="" className="custom-button_red">
-          En savoir plus sur nous
-        </a>
+        <CustomLink to="/aboutuspage" className="custom-button_red">
+          {t("Help those who come from far - CTA")}
+        </CustomLink>
       </div>
     </div>
   );

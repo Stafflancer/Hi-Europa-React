@@ -4,6 +4,8 @@ const initialState = {
     gettingUser: false,
     getUserSuccess: false,
     user: {},
+    pagination: {},
+    admins: [],
     getUserFailure: false,
     updatingUser: false,
     updateUserSuccess: false,
@@ -12,6 +14,24 @@ const initialState = {
 
 export function adminReducer(state = initialState, action) {
     switch (action.type) {
+        case adminConstants.GET_ADMINS_SUCCESS:
+            return {
+                ...state,
+                admins: action.data.data,
+                pagination: action.data.pagination,
+                gettingUser: true,
+                getUserSuccess: false,
+                getUserFailure: false,
+            };
+        case adminConstants.GET_ADMINS_FAILURE:
+            return {
+                ...state,
+                gettingUser: true,
+                getUserSuccess: false,
+                admins: [],
+                pagination: {},
+                getUserFailure: false,
+            };
         case adminConstants.GET_ADMIN_REQUEST:
             return {
                 ...state,

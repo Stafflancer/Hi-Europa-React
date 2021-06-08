@@ -1,25 +1,21 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const IntroContent = () => {
+  const { t } = useTranslation();
   return (
     <div className="intro-content">
       <div className="content-block">
-        <h4 className="title">100% franco-chinois</h4>
-        <p className="description">
-          Plus de barrière de langues, nous vous comprenons.
-        </p>
+        <h4 className="title">{t("three-values-1-title")}</h4>
+        <p className="description">{t("three-values-1-explanation")}</p>
       </div>
       <div className="content-block">
-        <h4 className="title">100% à vos côtés</h4>
-        <p className="description">
-          Nos équipes support chinoises présentent à chaque étape.
-        </p>
+        <h4 className="title">{t("three-values-2-title")}</h4>
+        <p className="description">{t("three-values-2-explanation")}</p>
       </div>
       <div className="content-block">
-        <h4 className="title">Sécurité et confiance</h4>
-        <p className="description">
-          Marque de la MAIF, groupe d’assurance mutualiste reconnu.
-        </p>
+        <h4 className="title">{t("three-values-3-title")}</h4>
+        <p className="description">{t("three-values-3-explanation")}</p>
       </div>
     </div>
   );

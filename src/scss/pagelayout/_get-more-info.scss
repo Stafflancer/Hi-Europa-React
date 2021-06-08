@@ -1,27 +1,34 @@
 .get-more-info {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+  max-width: 980px;
+  margin: 0 auto;
+  @media (min-width: $tablet) {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
   @media (min-width: $tablet) {
     margin-bottom: 56px;
-    .chat-with-us {
-      margin-right: 24px;
-    }
+  }
+}
+.service-page .get-more-info {
+  @media (min-width: $tablet) {
+    margin-top: 56px;
   }
 }
 .chat-with-us {
   width: 100%;
   padding: 40px;
-  background: $primary-pl;
+  background: rgb(211, 10, 83);
   @media (min-width: $tablet) {
     border-radius: 24px;
-    max-width: 478px;
     padding: 40px 60px;
   }
   .title {
     @extend .h2-headline;
-    margin-bottom: 24px;
-    color: $white;
+    margin-bottom: 40px;
+    color: $white !important;
     @media (min-width: $tablet) {
       font-size: 32px;
       line-height: 40px;
@@ -41,13 +48,18 @@
       line-height: 28px;
     }
   }
+  .custom-button_white {
+    margin-top: auto;
+  }
+}
+.home-page .chat-with-us {
+  border-radius: unset;
 }
 .know-more-about-us {
   width: 100%;
-  padding: 40px;
-  background: $white;
+  padding: 40px 30px;
+  background: rgb(251, 251, 251);
   @media (min-width: $tablet) {
-    max-width: 478px;
     border-radius: 24px;
     border: 3px solid #000000;
     padding: 40px 60px;
@@ -55,18 +67,18 @@
   .title {
     @extend .h2-headline;
     margin-bottom: 16px;
-    color: $primary-pl;
+    color: $primary-pl !important;
     @media (min-width: $tablet) {
       font-size: 32px;
       line-height: 40px;
       margin-bottom: 11px;
+      min-height: 80px;
     }
   }
   img {
-    width: 193px;
+    height: 126px;
     margin-bottom: 21px;
     @media (min-width: $tablet) {
-      width: 164px;
       margin-bottom: 10px;
     }
   }
@@ -79,4 +91,11 @@
       line-height: 28px;
     }
   }
+  .custom-button_red {
+    margin-top: auto;
+  }
+}
+.home-page .know-more-about-us {
+  border-radius: unset;
+  border: none;
 }

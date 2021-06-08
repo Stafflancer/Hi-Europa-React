@@ -16,7 +16,7 @@
     display: none;
     cursor: pointer;
     position: relative;
-    z-index: 100;
+    z-index: 99;
     @media (max-width: $bp-large) {
       display: block;
     }
@@ -60,9 +60,31 @@
       }
     }
   }
+  .hamburger-button.api-layout {
+    position: absolute;
+    left: 25px;
+    top: 35px;
+  }
+  .logo-center-H5 {
+    @media (max-width: $bp-large) {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  .logo-center-api {
+    @media (min-width: $tablet) {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
   .logo {
     width: 95px;
+  }
+  .logo.api-layout {
     @media (max-width: $bp-tablet) {
+      display: none;
     }
   }
   .nav-wrap {
@@ -84,20 +106,17 @@
       align-items: center;
       padding-left: 40px !important;
       @media (max-width: $bp-large) {
-        margin-top: 180px !important;
+        margin-top: 120px !important;
         flex-direction: column;
         padding: 0 !important;
       }
       li {
         margin-right: 32px;
         @media (max-width: $bp-large) {
-          margin: 0 0 40px 0;
+          margin: 0 0 40px 0 !important;
         }
         &:last-child {
           margin-right: 54px;
-          @media (max-width: $bp-large) {
-            margin: 0 0 111px 0;
-          }
         }
         a {
           color: $inactive;
@@ -124,17 +143,48 @@
     }
     ul.homepage li a {
       color: $black;
+      @media (max-width: $bp-large) {
+        color: $white;
+      }
     }
     .service-tag {
+      max-width: 338px;
       margin: 0 auto;
       display: none;
       @media (max-width: $bp-large) {
         display: flex;
       }
     }
+    .nav-bar__item a {
+      position: relative;
+    }
   }
   .nav-wrap.open {
     left: 0;
+  }
+  .lang-switcher-wrap {
+    height: 66px;
+    display: flex;
+    align-items: center;
+  }
+  .working-time-block {
+    margin-right: 56px;
+    @media (max-width: $bp-tablet) {
+      display: none;
+    }
+    p {
+      font-size: 16px;
+      line-height: 22px;
+      text-align: right;
+      margin: 0;
+    }
+    .phone-number {
+      font-weight: 700;
+      color: $primary-pl;
+    }
+    .working-time {
+      font-weight: 600;
+    }
   }
   .lang-switcher {
     position: relative;
@@ -172,12 +222,11 @@
           width: 36px;
           margin-right: 24px;
         }
-        a {
-          font-size: 24px;
-          font-weight: 600;
-          color: $primary-pl;
-          line-height: 32px;
-        }
+        font-size: 24px;
+        font-weight: 600;
+        color: $primary-pl;
+        line-height: 32px;
+        cursor: pointer;
       }
       &:hover {
         visibility: visible;
@@ -185,6 +234,7 @@
     }
     &__icon {
       position: relative;
+      top: -5px;
       display: flex;
       flex-direction: column;
       gap: 1.6px;
@@ -195,7 +245,7 @@
       }
       .active {
         position: absolute;
-        top: 25%;
+        top: 5px;
         right: 8px;
         z-index: 1;
         opacity: 1;
@@ -206,6 +256,8 @@
     }
   }
   .lang-switcher.open .lang-switcher__popup {
-    left: 0;
+    @media (max-width: $bp-large) {
+      left: 0;
+    }
   }
 }

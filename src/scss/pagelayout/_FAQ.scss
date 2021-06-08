@@ -1,10 +1,45 @@
+.all-faq-wrap {
+  display: none;
+  max-width: 980px;
+  margin: 0 auto;
+  margin-bottom: -40px;
+  @media (min-width: $tablet) {
+    display: block;
+  }
+}
+.all-faq {
+  @extend .body-md-brand-bold;
+  display: inline-block;
+  text-align: left;
+  color: $primary-pl;
+  padding-left: 25px;
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 0;
+  &::before {
+    position: absolute;
+    left: 0;
+    top: -3px;
+    z-index: 1;
+    content: "\f078";
+    font-family: "FontAwesome" !important;
+    font-size: 20px;
+    color: $primary-pl;
+    font-weight: 100;
+    transform: rotate(90deg);
+  }
+}
 .FAQ-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 40px 38px;
   background: $background-2;
   .title {
     @extend .h2-headline;
     color: $primary-pl;
-    margin-bottom: 40px;
+    margin-top: 20px;
+    margin-bottom: 56px;
   }
   .questions-group {
     display: flex;
@@ -12,7 +47,7 @@
     @media (min-width: $tablet) {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      grid-gap: 153px;
+      grid-gap: 0 153px;
       max-width: 980px;
       margin: 0 auto;
     }
@@ -20,14 +55,15 @@
   li.question {
     position: relative;
     padding-right: 58px;
-    a::after {
+    > a::after {
       position: absolute;
       right: 0;
       top: 0;
       z-index: 1;
-      content: '\f078';
-      font-family: 'FontAwesome' !important;
+      content: "\f078";
+      font-family: "FontAwesome" !important;
       font-size: 20px;
+      font-weight: 100;
       transition: 0.3s;
     }
     a[aria-expanded="true"]::after {
@@ -52,6 +88,11 @@
   }
   .answer {
     padding-top: 16px;
+    a {
+      font-weight: normal;
+      color: #007bff;
+      text-decoration: underline;
+    }
   }
   .show-more {
     @extend .body-md-brand-bold;
@@ -59,41 +100,39 @@
     margin-top: 8px;
     margin-bottom: 0;
     cursor: pointer;
+    position: relative;
     @media (min-width: $tablet) {
       margin-top: 22px;
     }
-  }
-}
-// temp
-.group-tag {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  margin-bottom: 42px;
-  padding-top: 24px;
-  @media (min-width: $tablet) {
-    justify-content: center;
-    flex-direction: row;
-    margin-bottom: 56px;
-  }
-  .service-tag:not(:last-child) {
-    margin: 0 0 16px 0;
-    @media (min-width: $tablet) {
-      margin: 0 26px 0 0;
+    &::after {
+      position: absolute;
+      right: -38px;
+      top: -4px;
+      z-index: 1;
+      content: "\f078";
+      font-family: "FontAwesome" !important;
+      color: $primary-pl;
+      font-size: 20px;
+      font-weight: 100;
+      transition: 0.3s;
+    }
+    &[aria-expanded="true"]::after {
+      transform: rotate(-180deg);
     }
   }
 }
-.about-us-page {
-  .content-wrap {
-    padding: 56px 28px;
-  }
-  .title {
-    @extend .h3-headline;
-    color: $primary-pl;
-    margin-bottom: 24px;
-  }
-  .content {
-    @extend .body-xl-brand;
-    margin-bottom: 40px;
+.group-tag {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 42px;
+  padding: 24px 38px 0 38px;
+  @media (min-width: $tablet) {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 25px;
+    max-width: 980px;
+    padding: 24px 0 0 0;
+    margin: 0 auto;
+    margin-bottom: 56px;
   }
 }

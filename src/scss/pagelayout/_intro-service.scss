@@ -19,15 +19,18 @@
     margin-bottom: 24px;
   }
   .service-block-wrap {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 0 40px;
-  }
-  .service-block-wrap .service-block:not(:last-child) {
-    margin: 0 0 22px 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 0 30px;
+    @media (max-width: $bp-s) {
+      padding: 0 25px;
+    }
     @media (min-width: $tablet) {
-      margin: 0 24px 0 0;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
     }
   }
   .service-block {
@@ -38,8 +41,10 @@
     border: 4px solid $secondary-pl;
     border-radius: 36px;
     @media (min-width: $tablet) {
-      max-width: 478px;
       padding: 32px 38px 38px 38px;
+    }
+    @media (max-width: $bp-s) {
+      padding: 24px 12px;
     }
     .title {
       @extend .h3-headline;
@@ -71,9 +76,13 @@
       }
     }
     .custom-button_red {
-      width: 100%;
+      width: max-content;
+      min-width: 100%;
       @media (min-width: $tablet) {
-        width: 75%;
+        min-width: 75%;
+      }
+      @media (max-width: $bp-s) {
+        padding: 0 8px;
       }
     }
   }

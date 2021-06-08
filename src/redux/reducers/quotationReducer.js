@@ -27,6 +27,23 @@ export function quotationReducer(state = initialState, action) {
                 getQuotationsSuccess: false,
                 getQuotationsFailure: action.error
             };
+        case quotationConstants.GET_QUOTATION_SUCCESS:
+            return {
+                ...state,
+                quotations: action.data.data,
+                pagination: action.data.pagination,
+                gettingQuotations: false,
+                getQuotationsSuccess: true,
+                getQuotationsFailure: false
+            };
+        case quotationConstants.GET_QUOTATION_FAILURE:
+            return {
+                ...state,
+                quotations: [],
+                gettingQuotations: false,
+                getQuotationsSuccess: false,
+                getQuotationsFailure: action.error
+            };
         default:
             return state;
     }
